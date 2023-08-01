@@ -1,0 +1,32 @@
+name: Update OpenAPI File
+
+on:
+  schedule:
+    # This runs the action every day at 00:00 UTC
+    - cron: '0 0 * * *'
+
+jobs:
+  update-openapi:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Download OpenAPI file
+      run: curl -sSL https://insulator.conductor.one/api/v1/openapi.yaml -o openapi.yaml
+
+    - name: Check if there are changes
+      id: check-changes
+      run: echo "::set-output name=changed::$(if diff -q openapi.yaml path/to/existing/openapi.yaml; then echo 'false'; else echo 'true'; fi)"
+    
+    - name: Create Pull Request if changed
+      if: steps.check-changes.outputs.changed == 'true'
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: 'Update openapi.yaml'
+        title: 'Update OpenAPI File'
+        body: 'This PR updates the openapi.yaml file to the latest version.'
+        branch: 'update-openapi-file'
+        
