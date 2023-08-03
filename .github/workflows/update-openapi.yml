@@ -21,16 +21,21 @@ jobs:
     # Check if there are changes between the old and new versions
     - name: Check if there are changes
       id: check-changes
-      run: echo "::set-output name=changed::$(if diff -q openapi_new.yaml path/to/existing/openapi.yaml; then echo 'false'; else echo 'true'; fi)"
+      run: |
+        if diff -q openapi_new.yaml path/to/existing/openapi.yaml; then
+          echo "CHANGED=false" >> $GITHUB_ENV
+        else
+          echo "CHANGED=true" >> $GITHUB_ENV
+        fi
     
     # Generate release notes if there are changes
     - name: Generate Release Notes if changed
-      if: steps.check-changes.outputs.changed == 'true'
+      if: env.CHANGED == 'true'
       run: python path/to/generate_release_notes.py
     
     # Create Pull Request if changed
     - name: Create Pull Request if changed
-      if: steps.check-changes.outputs.changed == 'true'
+      if: env.CHANGED == 'true'
       uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
