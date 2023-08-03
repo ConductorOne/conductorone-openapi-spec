@@ -6,7 +6,6 @@ on:
     - cron: '0 17 * * *'
   workflow_dispatch: # This allows manual triggering
 
-
 jobs:
   update-openapi:
     runs-on: ubuntu-latest
@@ -15,13 +14,22 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
 
+    # Save the old version of the openapi.yaml file
+    - name: Save old version of openapi.yaml
+      run: cp path/to/existing/openapi.yaml path/to/existing/openapi_old.yaml
+
     - name: Download OpenAPI file
       run: curl -sSL https://insulator.conductor.one/api/v1/openapi.yaml -o openapi.yaml
 
     - name: Check if there are changes
       id: check-changes
       run: echo "::set-output name=changed::$(if diff -q openapi.yaml path/to/existing/openapi.yaml; then echo 'false'; else echo 'true'; fi)"
-    
+
+    # Generate release notes if there are changes
+    - name: Generate Release Notes if changed
+      if: steps.check-changes.outputs.changed == 'true'
+      run: python path/to/generate_release_notes.py
+
     - name: Create Pull Request if changed
       if: steps.check-changes.outputs.changed == 'true'
       uses: peter-evans/create-pull-request@v3
@@ -29,6 +37,5 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: 'Update openapi.yaml'
         title: 'Update OpenAPI File'
-        body: 'This PR updates the openapi.yaml file to the latest version.'
+        body: 'This PR updates the openapi.yaml file to the latest version.\n\n${{ env.RELEASE_NOTES }}' # Include release notes in PR body
         branch: 'update-openapi-file'
-        
