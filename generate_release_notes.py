@@ -2,6 +2,14 @@ import yaml
 from deepdiff import DeepDiff
 import os
 
+# --- Sort Changes ---
+def classify_change(change_path, change_type, buckets):
+    # Classify the change as schema or endpoint
+    if "['components']['schemas']" in change_path:
+        buckets[change_type]['schemas'].append(change_path.split('[')[-1][1:-2])
+    else:
+        buckets[change_type]['endpoints'].append(change_path.split('[')[-1][1:-2])
+
 def extract_changes(diff):
     buckets = {
         'added': {'schemas': [], 'endpoints': []},
@@ -23,6 +31,7 @@ def extract_changes(diff):
 
     return buckets
 
+# --- Release notes generators ---
 def _generate_schemas_notes(schemas, spec):
     notes = ""
     for schema in schemas:
@@ -66,44 +75,38 @@ def _get_specs_for_change_type(change_type, current_spec, previous_spec):
         return current_spec, previous_spec
     return (current_spec,) if change_type != 'deleted' else (previous_spec,)
 
+# --- Release notes generation ---
+
+NOTE_GENERATORS = {
+    'added': {
+        'schemas': generate_added_schemas_notes,
+        'endpoints': generate_added_endpoints_notes
+    },
+    'deleted': {
+        'schemas': generate_deleted_schemas_notes,
+        'endpoints': generate_deleted_endpoints_notes
+    },
+    'changed': {
+        'schemas': generate_changed_schemas_notes,
+        'endpoints': generate_changed_endpoints_notes
+    }
+}
+
 def generate_release_notes(buckets, current_spec, previous_spec):
     release_notes = "## Release Notes\n\n"
-
-    note_generators = {
-        'added': {
-            'schemas': generate_added_schemas_notes,
-            'endpoints': generate_added_endpoints_notes
-        },
-        'deleted': {
-            'schemas': generate_deleted_schemas_notes,
-            'endpoints': generate_deleted_endpoints_notes
-        },
-        'changed': {
-            'schemas': generate_changed_schemas_notes,
-            'endpoints': generate_changed_endpoints_notes
-        }
-    }
-
     for change_type, categories in buckets.items():
         section_content = ""
         for category, items in categories.items():
             if items:
                 specs = _get_specs_for_change_type(change_type, current_spec, previous_spec)
-                section_content += note_generators[change_type][category](items, *specs)
+                section_content += NOTE_GENERATORS[change_type][category](items, *specs)
 
         if section_content:
             release_notes += f"### {change_type.capitalize()}:\n{section_content}"
 
     return release_notes
 
-def classify_change(change_path, change_type, buckets):
-    # Classify the change as schema or endpoint
-    if "['components']['schemas']" in change_path:
-        buckets[change_type]['schemas'].append(change_path.split('[')[-1][1:-2])
-    else:
-        buckets[change_type]['endpoints'].append(change_path.split('[')[-1][1:-2])
-
-
+# --- Main ---
 OLD_OPENAPI_FILE_PATH = 'openapi_old.yaml'
 OPENAPI_FILE_PATH = 'openapi.yaml'
 def main():
