@@ -19,8 +19,10 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Install deepdiff
-      run: pip install deepdiff
+    - name: Install dependencies
+      run: |
+        pip install deepdiff
+        pip install pyyaml
       
     # Download the new OpenAPI file to a temporary location
     - name: Download OpenAPI file
