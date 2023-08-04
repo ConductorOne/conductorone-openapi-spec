@@ -31,7 +31,7 @@ jobs:
     # Generate release notes if there are changes
     - name: Generate Release Notes if changed
       if: env.CHANGED == 'true'
-      run: python path/to/generate_release_notes.py
+      run: python .github/workflows/generate_release_notes.py
     
     # Create Pull Request if changed
     - name: Create Pull Request if changed
