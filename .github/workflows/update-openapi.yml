@@ -51,5 +51,5 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: 'Update openapi.yaml'
         title: 'Update OpenAPI File'
-        body: 'This PR updates the openapi.yaml file to the latest version.\n\n${{ env.RELEASE_NOTES }}' # Include release notes in PR body
+        body: 'This PR updates the openapi.yaml file to the latest version. Please make sure the release notes are correct.'
         branch: 'update-openapi-file'
