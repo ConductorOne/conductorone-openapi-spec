@@ -3,7 +3,7 @@ name: Update OpenAPI File
 on:
   schedule:
     # This runs the action every day at 00:00 UTC
-    - cron: '0 17 * * MON'
+    - cron: '0 17 * * FRI'
   workflow_dispatch: # This allows manual triggering
 
 jobs:

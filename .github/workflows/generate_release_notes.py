@@ -166,7 +166,8 @@ def main():
         file.write(release_notes)
 
     os.remove(OLD_OPENAPI_FILE_PATH)
-
+    # Rename the file so that it can be used as the previous version in the next release
+    os.rename(OPENAPI_FILE_PATH, OLD_OPENAPI_FILE_PATH)
     print("Release notes generated.")
 
 if __name__ == "__main__":
