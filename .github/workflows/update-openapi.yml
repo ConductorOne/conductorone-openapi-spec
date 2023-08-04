@@ -13,7 +13,15 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v3
-    
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install deepdiff
+      run: pip install deepdiff
+      
     # Download the new OpenAPI file to a temporary location
     - name: Download OpenAPI file
       run: curl -sSL https://insulator.conductor.one/api/v1/openapi.yaml -o openapi_new.yaml
