@@ -3,12 +3,36 @@ from deepdiff import DeepDiff
 import os
 
 # --- Sort Changes ---
+NODE_BLACKLIST = ['description']
 def classify_change(change_path, change_type, buckets):
-    # Classify the change as schema or endpoint
-    if "['components']['schemas']" in change_path:
-        buckets[change_type]['schemas'].append(change_path.split('[')[-1][1:-2])
+    node = change_path.split('[')[-1][1:-2]
+    object_changed = ''
+    if change_path.startswith("root['components']['schemas']"):
+        object_changed = 'schemas'
+    elif change_path.startswith("root['paths']"):
+        object_changed = 'endpoints'
     else:
-        buckets[change_type]['endpoints'].append(change_path.split('[')[-1][1:-2])
+        raise ValueError("This case is not handled" + change_path)
+    
+    # Ignore changes in certain leaves
+    if node in NODE_BLACKLIST:
+        return
+
+    # Check if the change occured on a schema [should only happens when a schema is added/deleted]
+    if node.startswith('c1.api'):
+        # Ensure there are no more [] after the matching pattern (i.e. its not an attribute of a schema being changed)
+        if change_path.count('[') == 3 and change_type in ['added', 'deleted'] and object_changed == 'schemas':
+            buckets[change_type][object_changed].append(node)
+            return
+        raise ValueError("This case is not handled" + change_path)
+    
+    # If the leaf starts with '/api/' it means an endpoint was added/deleted
+    if node.startswith('/api/'):
+        # Ensure there are no more [] after the matching pattern (i.e. its not an attribute of a schema being changed)
+        if change_path.count('[') == 2 and change_type in ['added', 'deleted'] and object_changed == 'endpoints':
+            buckets[change_type][object_changed].append(node)
+            return
+        raise ValueError("This case is not handled" + change_path)
 
 def extract_changes(diff):
     buckets = {
