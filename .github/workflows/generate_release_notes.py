@@ -146,8 +146,8 @@ def generate_release_notes(buckets, current_spec, previous_spec, diff):
     return release_notes
 
 # --- Main ---
-OLD_OPENAPI_FILE_PATH = 'openapi_old.yaml'
-OPENAPI_FILE_PATH = 'openapi.yaml'
+OLD_OPENAPI_FILE_PATH = 'openapi.yaml'
+OPENAPI_FILE_PATH = 'openapi_new.yaml'
 def main():
     print("Generating release notes...")
     with open(OLD_OPENAPI_FILE_PATH, 'r') as file:
@@ -165,7 +165,7 @@ def main():
     with open('RELEASE_NOTES.md', 'w') as file:
         file.write(release_notes)
 
-    # os.remove(OLD_OPENAPI_FILE_PATH)
+    os.remove(OLD_OPENAPI_FILE_PATH)
 
     print("Release notes generated.")
 
