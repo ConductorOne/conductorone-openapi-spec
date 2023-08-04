@@ -13,10 +13,6 @@ def classify_change(change_path, change_type, buckets):
         object_changed = 'endpoints'
     else:
         raise ValueError("This case is not handled" + change_path)
-    
-    # Ignore changes in certain leaves
-    if node in NODE_BLACKLIST:
-        return
 
     # Check if the change occured on a schema [should only happens when a schema is added/deleted]
     if node.startswith('c1.api'):
@@ -33,6 +29,14 @@ def classify_change(change_path, change_type, buckets):
             buckets[change_type][object_changed].append(node)
             return
         raise ValueError("This case is not handled" + change_path)
+
+    # Ignore changes in certain leaves
+    if node in NODE_BLACKLIST:
+        print(f"Ignored changed {node} in {change_path}")
+        return
+    
+    buckets['changed'][object_changed].append(change_path)
+
 
 def extract_changes(diff):
     buckets = {
@@ -71,9 +75,6 @@ def generate_added_schemas_notes(added_schemas, current_spec):
 def generate_deleted_schemas_notes(deleted_schemas, previous_spec):
     return "#### Schemas:\n" + _generate_schemas_notes(deleted_schemas, previous_spec)
 
-def generate_changed_schemas_notes(changed_schemas, current_spec, previous_spec):
-    # ... implementation ...
-    pass 
 
 def _generate_endpoints_notes(endpoints, spec):
     notes = ""
@@ -90,14 +91,28 @@ def generate_added_endpoints_notes(added_endpoints, current_spec):
 def generate_deleted_endpoints_notes(deleted_endpoints, previous_spec):
     return "#### Endpoints:\n" + _generate_endpoints_notes(deleted_endpoints, previous_spec)
 
-def generate_changed_endpoints_notes(changed_endpoints, current_spec, previous_spec):
-    # ... implementation ...
-    pass
+def _generate_changed_notes(changed_schemas, diff):
+    notes = ""
+    for path in changed_schemas:
+        notes += f"- {path}\n"
+        if path in diff['values_changed']:
+            notes += f"\t- Old Value: {diff['values_changed'][path]['old_value']}\n\t- New Value: {diff['values_changed'][path]['new_value']}\n"
+    return notes
 
-def _get_specs_for_change_type(change_type, current_spec, previous_spec):
-    if change_type == 'changed':
-        return current_spec, previous_spec
-    return (current_spec,) if change_type != 'deleted' else (previous_spec,)
+def generate_changed_schemas_notes(changed_schemas,  diff):
+    return "#### Schemas:\n" + _generate_changed_notes(changed_schemas, diff)
+
+def generate_changed_endpoints_notes(changed_endpoints,  diff):
+    return "#### Endpoints:\n" + _generate_changed_notes(changed_endpoints, diff)
+
+def _get_specs_for_change_type(change_type, current_spec, previous_spec, diff):
+    match change_type:
+        case 'added':
+            return current_spec
+        case 'deleted':
+            return previous_spec
+        case 'changed':
+            return diff
 
 # --- Release notes generation ---
 
@@ -116,14 +131,14 @@ NOTE_GENERATORS = {
     }
 }
 
-def generate_release_notes(buckets, current_spec, previous_spec):
+def generate_release_notes(buckets, current_spec, previous_spec, diff):
     release_notes = "## Release Notes\n\n"
     for change_type, categories in buckets.items():
         section_content = ""
         for category, items in categories.items():
             if items:
-                specs = _get_specs_for_change_type(change_type, current_spec, previous_spec)
-                section_content += NOTE_GENERATORS[change_type][category](items, *specs)
+                specs = _get_specs_for_change_type(change_type, current_spec, previous_spec, diff)
+                section_content += NOTE_GENERATORS[change_type][category](items, specs)
 
         if section_content:
             release_notes += f"### {change_type.capitalize()}:\n{section_content}"
@@ -134,6 +149,7 @@ def generate_release_notes(buckets, current_spec, previous_spec):
 OLD_OPENAPI_FILE_PATH = 'openapi_old.yaml'
 OPENAPI_FILE_PATH = 'openapi.yaml'
 def main():
+    print("Generating release notes...")
     with open(OLD_OPENAPI_FILE_PATH, 'r') as file:
         previous_spec = yaml.safe_load(file)
     with open(OPENAPI_FILE_PATH, 'r') as file:
@@ -144,7 +160,7 @@ def main():
         
     diff = DeepDiff(previous_spec, current_spec)
     buckets = extract_changes(diff)
-    release_notes = generate_release_notes(buckets, current_spec, previous_spec)
+    release_notes = generate_release_notes(buckets, current_spec, previous_spec, diff)
 
     with open('RELEASE_NOTES.md', 'w') as file:
         file.write(release_notes)
