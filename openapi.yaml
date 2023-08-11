@@ -1602,6 +1602,183 @@ components:
             title: Update App Usage Controls Response
             type: object
             x-speakeasy-name-override: UpdateAppUsageControlsResponse
+        c1.api.attribute.v1.AttributeType:
+            description: AttributeType defines the type of an attribute.
+            properties:
+                id:
+                    description: The ID of the AttributeType.
+                    type: string
+                name:
+                    description: The name of the AttributeType.
+                    type: string
+            title: Attribute Type
+            type: object
+            x-speakeasy-name-override: AttributeType
+        c1.api.attribute.v1.AttributeValue:
+            description: AttributeValue is the value of an attribute of a defined type.
+            properties:
+                attributeTypeId:
+                    description: The ID of the AttributeType that this AttributeValue belongs to.
+                    type: string
+                createdAt:
+                    format: date-time
+                    readOnly: true
+                    type: string
+                deletedAt:
+                    format: date-time
+                    readOnly: true
+                    type: string
+                id:
+                    description: The ID of the AttributeValue.
+                    type: string
+                updatedAt:
+                    format: date-time
+                    readOnly: true
+                    type: string
+                value:
+                    description: The value of the AttributeValue. This is the string that will be displayed to the user.
+                    type: string
+            title: Attribute Value
+            type: object
+            x-speakeasy-name-override: AttributeValue
+        c1.api.attribute.v1.CreateAttributeValueRequest:
+            description: The CreateAttributeValueRequest message.
+            properties:
+                attributeTypeId:
+                    description: The attributeTypeId field.
+                    type: string
+                value:
+                    description: The value field.
+                    type: string
+            title: Create Attribute Value Request
+            type: object
+            x-speakeasy-name-override: CreateAttributeValueRequest
+        c1.api.attribute.v1.CreateAttributeValueResponse:
+            description: CreateAttributeValueResponse is the response for creating an attribute value.
+            properties:
+                value:
+                    $ref: '#/components/schemas/c1.api.attribute.v1.AttributeValue'
+            title: Create Attribute Value Response
+            type: object
+            x-speakeasy-name-override: CreateAttributeValueResponse
+        c1.api.attribute.v1.DeleteAttributeValueRequestInput:
+            description: The DeleteAttributeValueRequest message.
+            title: Delete Attribute Value Request
+            type: object
+            x-speakeasy-name-override: DeleteAttributeValueRequest
+        c1.api.attribute.v1.DeleteAttributeValueResponse:
+            description: DeleteAttributeValueResponse is the empty response for deleting an attribute value.
+            title: Delete Attribute Value Response
+            type: object
+            x-speakeasy-name-override: DeleteAttributeValueResponse
+        c1.api.attribute.v1.GetAttributeValueResponse:
+            description: GetAttributeValueResponse is the response for getting an attribute value by id.
+            properties:
+                value:
+                    $ref: '#/components/schemas/c1.api.attribute.v1.AttributeValue'
+            title: Get Attribute Value Response
+            type: object
+            x-speakeasy-name-override: GetAttributeValueResponse
+        c1.api.attribute.v1.ListAttributeTypesResponse:
+            description: ListAttributeTypesResponse is the response for listing attribute types.
+            properties:
+                list:
+                    description: The list of AttributeTypes.
+                    items:
+                        $ref: '#/components/schemas/c1.api.attribute.v1.AttributeType'
+                    nullable: true
+                    type: array
+                nextPageToken:
+                    description: |-
+                        The nextPageToken is shown for the next page if the number of results is larger than the max page size.
+                         The server returns one page of results and the nextPageToken until all results are retreived.
+                         To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
+                    type: string
+                notificationToken:
+                    description: The notificationToken field.
+                    type: string
+            title: List Attribute Types Response
+            type: object
+            x-speakeasy-name-override: ListAttributeTypesResponse
+        c1.api.attribute.v1.ListAttributeValuesResponse:
+            description: ListAttributeValuesResponse is the response for listing attribute values for a given AttributeType.
+            properties:
+                list:
+                    description: The list of AttributeValues.
+                    items:
+                        $ref: '#/components/schemas/c1.api.attribute.v1.AttributeValue'
+                    nullable: true
+                    type: array
+                nextPageToken:
+                    description: |-
+                        The nextPageToken is shown for the next page if the number of results is larger than the max page size.
+                         The server returns one page of results and the nextPageToken until all results are retreived.
+                         To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
+                    type: string
+                notificationToken:
+                    description: The notificationToken field.
+                    type: string
+            title: List Attribute Values Response
+            type: object
+            x-speakeasy-name-override: ListAttributeValuesResponse
+        c1.api.attribute.v1.SearchAttributeValuesRequest:
+            description: Search Attributes by a few properties.
+            properties:
+                attributeTypeIds:
+                    description: The attribute type ids for what type of attributes to search for.
+                    items:
+                        type: string
+                    nullable: true
+                    type: array
+                excludeIds:
+                    description: Exclude attributes with these ids from the search results.
+                    items:
+                        type: string
+                    nullable: true
+                    type: array
+                ids:
+                    description: Include attributes with these ids in the search results.
+                    items:
+                        type: string
+                    nullable: true
+                    type: array
+                pageSize:
+                    description: The pageSize where 0 <= pageSize <= 100. Values < 10 will be set to 10. A value of 0 returns the default page size (currently 25)
+                    format: int32
+                    type: number
+                pageToken:
+                    description: The pageToken field.
+                    type: string
+                query:
+                    description: Query the attributes with a fuzzy search on display name and description.
+                    type: string
+                value:
+                    description: Search for attributes with a case insensitive match on the attribute value which is the attribute name.
+                    type: string
+            title: Search Attribute Values Request
+            type: object
+            x-speakeasy-name-override: SearchAttributeValuesRequest
+        c1.api.attribute.v1.SearchAttributeValuesResponse:
+            description: SearchAttributeValuesResponse is the response for searching AttributeValues.
+            properties:
+                list:
+                    description: The list of returned AttributeValues.
+                    items:
+                        $ref: '#/components/schemas/c1.api.attribute.v1.AttributeValue'
+                    nullable: true
+                    type: array
+                nextPageToken:
+                    description: |-
+                        The nextPageToken is shown for the next page if the number of results is larger than the max page size.
+                         The server returns one page of results and the nextPageToken until all results are retreived.
+                         To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
+                    type: string
+                notificationToken:
+                    description: The notificationToken field.
+                    type: string
+            title: Search Attribute Values Response
+            type: object
+            x-speakeasy-name-override: SearchAttributeValuesResponse
         c1.api.auth.v1.IntrospectResponse:
             description: IntrospectResponse contains information about the current user who is authenticated.
             properties:
@@ -2506,6 +2683,8 @@ components:
                     type: boolean
                 provisionPolicy:
                     $ref: '#/components/schemas/c1.api.policy.v1.ProvisionPolicy'
+                provisionTarget:
+                    $ref: '#/components/schemas/c1.api.policy.v1.ProvisionTarget'
             title: Provision
             type: object
             x-speakeasy-name-override: Provision
@@ -2564,6 +2743,24 @@ components:
             title: Provision Policy
             type: object
             x-speakeasy-name-override: ProvisionPolicy
+        c1.api.policy.v1.ProvisionTarget:
+            description: ProvisionTarget indicates the specific app, app entitlement, and if known, the app user and grant duration of this provision step
+            properties:
+                appEntitlementId:
+                    description: The app entitlement that should be provisioned.
+                    type: string
+                appId:
+                    description: The app in which the entitlement should be provisioned
+                    type: string
+                appUserId:
+                    description: The app user that should be provisioned. May be unset if the app user is unknown
+                    type: string
+                grantDuration:
+                    format: duration
+                    type: string
+            title: Provision Target
+            type: object
+            x-speakeasy-name-override: ProvisionTarget
         c1.api.policy.v1.ReassignedAction:
             description: The ReassignedAction object describes the outcome of a policy step that has been reassigned.
             nullable: true
@@ -3478,7 +3675,7 @@ components:
             description: This object references a task by ID.
             properties:
                 id:
-                    description: The ID of the TaskRef
+                    description: The ID of the referenced Task
                     type: string
             title: Task Ref
             type: object
@@ -5586,6 +5783,140 @@ paths:
             x-speakeasy-entity-operation: App#update
             x-speakeasy-group: Apps
             x-speakeasy-name-override: Update
+    /api/v1/attribute/{id}:
+        delete:
+            description: Delete an attribute value by id.
+            operationId: c1.api.attribute.v1.Attributes.DeleteAttributeValue
+            parameters:
+                - in: path
+                  name: id
+                  required: true
+                  schema:
+                    description: The id field.
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/c1.api.attribute.v1.DeleteAttributeValueRequestInput'
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.DeleteAttributeValueResponse'
+                    description: DeleteAttributeValueResponse is the empty response for deleting an attribute value.
+            summary: Delete Attribute Value
+            tags:
+                - Attribute
+            x-speakeasy-group: Attributes
+            x-speakeasy-name-override: DeleteAttributeValue
+    /api/v1/attributes:
+        post:
+            description: Create a new attribute value.
+            operationId: c1.api.attribute.v1.Attributes.CreateAttributeValue
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/c1.api.attribute.v1.CreateAttributeValueRequest'
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.CreateAttributeValueResponse'
+                    description: CreateAttributeValueResponse is the response for creating an attribute value.
+            summary: Create Attribute Value
+            tags:
+                - Attribute
+            x-speakeasy-group: Attributes
+            x-speakeasy-name-override: CreateAttributeValue
+    /api/v1/attributes/{id}:
+        get:
+            description: Get an attribute value by id.
+            operationId: c1.api.attribute.v1.Attributes.GetAttributeValue
+            parameters:
+                - in: path
+                  name: id
+                  required: true
+                  schema:
+                    description: The id field.
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.GetAttributeValueResponse'
+                    description: GetAttributeValueResponse is the response for getting an attribute value by id.
+            summary: Get Attribute Value
+            tags:
+                - Attribute
+            x-speakeasy-group: Attributes
+            x-speakeasy-name-override: GetAttributeValue
+    /api/v1/attributes/types:
+        get:
+            description: List all attribute types.
+            operationId: c1.api.attribute.v1.Attributes.ListAttributeTypes
+            parameters:
+                - in: query
+                  name: page_size
+                  schema:
+                    description: The pageSize field.
+                    format: int32
+                    type: number
+                - in: query
+                  name: page_token
+                  schema:
+                    description: The pageToken field.
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.ListAttributeTypesResponse'
+                    description: ListAttributeTypesResponse is the response for listing attribute types.
+            summary: List Attribute Types
+            tags:
+                - Attribute
+            x-speakeasy-group: Attributes
+            x-speakeasy-name-override: ListAttributeTypes
+    /api/v1/attributes/types/{attribute_type_id}/values:
+        get:
+            description: List all attribute values for a given attribute type.
+            operationId: c1.api.attribute.v1.Attributes.ListAttributeValues
+            parameters:
+                - in: path
+                  name: attribute_type_id
+                  required: true
+                  schema:
+                    description: The attributeTypeId field.
+                    type: string
+                - in: query
+                  name: page_size
+                  schema:
+                    description: The pageSize field.
+                    format: int32
+                    type: number
+                - in: query
+                  name: page_token
+                  schema:
+                    description: The pageToken field.
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.ListAttributeValuesResponse'
+                    description: ListAttributeValuesResponse is the response for listing attribute values for a given AttributeType.
+            summary: List Attribute Values
+            tags:
+                - Attribute
+            x-speakeasy-group: Attributes
+            x-speakeasy-name-override: ListAttributeValues
     /api/v1/auth/introspect:
         get:
             description: Introspect returns the current user's principle_id, user_id and a list of roles, permissions, and enabled features.
@@ -6258,6 +6589,27 @@ paths:
                 - App
             x-speakeasy-group: AppSearch
             x-speakeasy-name-override: Search
+    /api/v1/search/attributes:
+        post:
+            description: Search attributes based on filters specified in the request body.
+            operationId: c1.api.attribute.v1.AttributeSearch.SearchAttributeValues
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/c1.api.attribute.v1.SearchAttributeValuesRequest'
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.SearchAttributeValuesResponse'
+                    description: SearchAttributeValuesResponse is the response for searching AttributeValues.
+            summary: Search Attribute Values
+            tags:
+                - Attribute
+            x-speakeasy-group: AttributeSearch
+            x-speakeasy-name-override: SearchAttributeValues
     /api/v1/search/entitlements:
         post:
             description: Search app entitlements based on filters specified in the request body.
