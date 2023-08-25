@@ -1,5 +1,20 @@
 components:
     schemas:
+        c1.api.app.v1.AddAppEntitlementOwnerRequestInput:
+            description: The request message for adding an app entitlement owner.
+            properties:
+                userId:
+                    description: The user_id field for the user to add as an owner of the app entitlement.
+                    type: string
+            title: Add App Entitlement Owner Request
+            type: object
+            x-speakeasy-entity: App_Entitlement_Owner
+            x-speakeasy-name-override: AddAppEntitlementOwnerRequest
+        c1.api.app.v1.AddAppEntitlementOwnerResponse:
+            description: The empty response message for adding an app entitlement owner.
+            title: Add App Entitlement Owner Response
+            type: object
+            x-speakeasy-name-override: AddAppEntitlementOwnerResponse
         c1.api.app.v1.AddAppOwnerRequestInput:
             description: Empty request body. Just placeholder for the add app owner request which uses URL values for input.
             title: Add App Owner Request
@@ -377,39 +392,6 @@ components:
             title: App Entitlement With User Bindings
             type: object
             x-speakeasy-name-override: AppEntitlementWithUserBindings
-        c1.api.app.v1.AppGroup:
-            description: The AppGroup message.
-            properties:
-                appId:
-                    description: The app referenced by this group.
-                    readOnly: true
-                    type: string
-                createdAt:
-                    format: date-time
-                    readOnly: true
-                    type: string
-                deletedAt:
-                    format: date-time
-                    readOnly: true
-                    type: string
-                displayName:
-                    description: The display name of the group in the app.
-                    type: string
-                id:
-                    description: The id field.
-                    readOnly: true
-                    type: string
-                notificationToken:
-                    description: Deprecated.
-                    readOnly: true
-                    type: string
-                updatedAt:
-                    format: date-time
-                    readOnly: true
-                    type: string
-            title: App Group
-            type: object
-            x-speakeasy-name-override: AppGroup
         c1.api.app.v1.AppPopulationReport:
             description: The AppPopulationReport is a generated report for a specific app that gives details about the app's users. These details include what groups, roles, and other entitlements the users have access to.
             properties:
@@ -633,9 +615,6 @@ components:
                          The server returns one page of results and the nextPageToken until all results are retreived.
                          To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
                     type: string
-                notificationToken:
-                    description: Deprecated
-                    type: string
             title: App Resource Type Service List Response
             type: object
             x-speakeasy-name-override: AppResourceTypeServiceListResponse
@@ -747,6 +726,52 @@ components:
             title: App User
             type: object
             x-speakeasy-name-override: AppUser
+        c1.api.app.v1.AppUserExpandMask:
+            description: The AppUserExpandMask message contains a list of paths to expand in the response.
+            properties:
+                paths:
+                    description: The paths to expand in the response. May be any combination of "*", "identity_user_id", "app_id", and "last_usage".
+                    items:
+                        type: string
+                    nullable: true
+                    type: array
+            title: App User Expand Mask
+            type: object
+            x-speakeasy-name-override: AppUserExpandMask
+        c1.api.app.v1.AppUserServiceUpdateRequestInput:
+            description: The AppUserServiceUpdateRequest message contains the app user and the fields to be updated.
+            properties:
+                appUser:
+                    $ref: '#/components/schemas/c1.api.app.v1.AppUser'
+                expandMask:
+                    $ref: '#/components/schemas/c1.api.app.v1.AppUserExpandMask'
+                updateMask:
+                    nullable: true
+                    type: string
+            title: App User Service Update Request
+            type: object
+            x-speakeasy-name-override: AppUserServiceUpdateRequest
+        c1.api.app.v1.AppUserServiceUpdateResponse:
+            description: The AppUserServiceUpdateResponse message.
+            properties:
+                appUserView:
+                    $ref: '#/components/schemas/c1.api.app.v1.AppUserView'
+                expanded:
+                    description: The expanded field.
+                    items:
+                        additionalProperties:
+                            oneOf: []
+                        description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+                        properties:
+                            '@type':
+                                description: The type of the serialized message.
+                                type: string
+                        type: object
+                    nullable: true
+                    type: array
+            title: App User Service Update Response
+            type: object
+            x-speakeasy-name-override: AppUserServiceUpdateResponse
         c1.api.app.v1.AppUserStatus:
             description: The satus of the applicaiton user.
             properties:
@@ -1241,24 +1266,24 @@ components:
             title: Get App Usage Controls Response
             type: object
             x-speakeasy-name-override: GetAppUsageControlsResponse
-        c1.api.app.v1.ListAppEntitlementGroupsResponse:
-            description: The ListAppEntitlementGroupsResponse message contains a list of results and a nextPageToken if applicable.
+        c1.api.app.v1.ListAppEntitlementOwnersResponse:
+            description: The response message for listing app entitlement owners.
             properties:
                 list:
-                    description: The list of results containing up to X results, where X is the page size defined in the request.
+                    description: The list of owners for the app entitlement.
                     items:
-                        $ref: '#/components/schemas/c1.api.app.v1.AppGroup'
+                        $ref: '#/components/schemas/c1.api.user.v1.User'
                     nullable: true
                     type: array
                 nextPageToken:
-                    description: The nextPageToken is shown for the next page if the number of results is larger than the max page size. The server returns one page of results and the nextPageToken until all results are retreived. To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
+                    description: |-
+                        The nextPageToken is shown for the next page if the number of results is larger than the max page size.
+                         The server returns one page of results and the nextPageToken until all results are retreived.
+                         To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
                     type: string
-                notificationToken:
-                    description: Deprecated
-                    type: string
-            title: List App Entitlement Groups Response
+            title: List App Entitlement Owners Response
             type: object
-            x-speakeasy-name-override: ListAppEntitlementGroupsResponse
+            x-speakeasy-name-override: ListAppEntitlementOwnersResponse
         c1.api.app.v1.ListAppEntitlementUsersResponse:
             description: The ListAppEntitlementUsersResponse message contains a list of results and a nextPageToken if applicable.
             properties:
@@ -1327,9 +1352,6 @@ components:
                 nextPageToken:
                     description: The nextPageToken is shown for the next page if the number of results is larger than the max page size. The server returns one page of results and the nextPageToken until all results are retreived. To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
                     type: string
-                notificationToken:
-                    description: Deprecated
-                    type: string
             title: List App Owners Response
             type: object
             x-speakeasy-name-override: ListAppOwnersResponse
@@ -1347,9 +1369,6 @@ components:
                         The nextPageToken is shown for the next page if the number of results is larger than the max page size.
                          The server returns one page of results and the nextPageToken until all results are retreived.
                          To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
-                    type: string
-                notificationToken:
-                    description: Deprecated.
                     type: string
             title: List App Resource Owners Response
             type: object
@@ -1381,9 +1400,6 @@ components:
                          The server returns one page of results and the nextPageToken until all results are retreived.
                          To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
                     type: string
-                notificationToken:
-                    description: Deprecated.
-                    type: string
             title: List Apps Response
             type: object
             x-speakeasy-name-override: ListAppsResponse
@@ -1401,6 +1417,16 @@ components:
             title: O Auth 2 Authorized As
             type: object
             x-speakeasy-name-override: OAuth2AuthorizedAs
+        c1.api.app.v1.RemoveAppEntitlementOwnerRequestInput:
+            description: The request message for removing an app entitlement owner.
+            title: Remove App Entitlement Owner Request
+            type: object
+            x-speakeasy-name-override: RemoveAppEntitlementOwnerRequest
+        c1.api.app.v1.RemoveAppEntitlementOwnerResponse:
+            description: The empty response message for removing an app entitlement owner.
+            title: Remove App Entitlement Owner Response
+            type: object
+            x-speakeasy-name-override: RemoveAppEntitlementOwnerResponse
         c1.api.app.v1.RemoveAppOwnerRequestInput:
             description: RemoveAppOwnerRequest is the request body for removing an app owner. It uses URL values for input.
             title: Remove App Owner Request
@@ -1472,9 +1498,6 @@ components:
                          The server returns one page of results and the nextPageToken until all results are retreived.
                          To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
                     type: string
-                notificationToken:
-                    description: Deprecated.
-                    type: string
             title: Search App Resource Types Response
             type: object
             x-speakeasy-name-override: SearchAppResourceTypesResponse
@@ -1523,9 +1546,6 @@ components:
                         The nextPageToken is shown for the next page if the number of results is larger than the max page size.
                          The server returns one page of results and the nextPageToken until all results are retreived.
                          To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
-                    type: string
-                notificationToken:
-                    description: Deprecated.
                     type: string
             title: Search Apps Response
             type: object
@@ -1602,6 +1622,174 @@ components:
             title: Update App Usage Controls Response
             type: object
             x-speakeasy-name-override: UpdateAppUsageControlsResponse
+        c1.api.attribute.v1.AttributeType:
+            description: AttributeType defines the type of an attribute.
+            properties:
+                id:
+                    description: The ID of the AttributeType.
+                    type: string
+                name:
+                    description: The name of the AttributeType.
+                    type: string
+            title: Attribute Type
+            type: object
+            x-speakeasy-name-override: AttributeType
+        c1.api.attribute.v1.AttributeValue:
+            description: AttributeValue is the value of an attribute of a defined type.
+            properties:
+                attributeTypeId:
+                    description: The ID of the AttributeType that this AttributeValue belongs to.
+                    type: string
+                createdAt:
+                    format: date-time
+                    readOnly: true
+                    type: string
+                deletedAt:
+                    format: date-time
+                    readOnly: true
+                    type: string
+                id:
+                    description: The ID of the AttributeValue.
+                    type: string
+                updatedAt:
+                    format: date-time
+                    readOnly: true
+                    type: string
+                value:
+                    description: The value of the AttributeValue. This is the string that will be displayed to the user.
+                    type: string
+            title: Attribute Value
+            type: object
+            x-speakeasy-name-override: AttributeValue
+        c1.api.attribute.v1.CreateAttributeValueRequest:
+            description: The CreateAttributeValueRequest message.
+            properties:
+                attributeTypeId:
+                    description: The attributeTypeId field.
+                    type: string
+                value:
+                    description: The value field.
+                    type: string
+            title: Create Attribute Value Request
+            type: object
+            x-speakeasy-name-override: CreateAttributeValueRequest
+        c1.api.attribute.v1.CreateAttributeValueResponse:
+            description: CreateAttributeValueResponse is the response for creating an attribute value.
+            properties:
+                value:
+                    $ref: '#/components/schemas/c1.api.attribute.v1.AttributeValue'
+            title: Create Attribute Value Response
+            type: object
+            x-speakeasy-name-override: CreateAttributeValueResponse
+        c1.api.attribute.v1.DeleteAttributeValueRequestInput:
+            description: The DeleteAttributeValueRequest message.
+            title: Delete Attribute Value Request
+            type: object
+            x-speakeasy-name-override: DeleteAttributeValueRequest
+        c1.api.attribute.v1.DeleteAttributeValueResponse:
+            description: DeleteAttributeValueResponse is the empty response for deleting an attribute value.
+            title: Delete Attribute Value Response
+            type: object
+            x-speakeasy-name-override: DeleteAttributeValueResponse
+        c1.api.attribute.v1.GetAttributeValueResponse:
+            description: GetAttributeValueResponse is the response for getting an attribute value by id.
+            properties:
+                value:
+                    $ref: '#/components/schemas/c1.api.attribute.v1.AttributeValue'
+            title: Get Attribute Value Response
+            type: object
+            x-speakeasy-name-override: GetAttributeValueResponse
+        c1.api.attribute.v1.ListAttributeTypesResponse:
+            description: ListAttributeTypesResponse is the response for listing attribute types.
+            properties:
+                list:
+                    description: The list of AttributeTypes.
+                    items:
+                        $ref: '#/components/schemas/c1.api.attribute.v1.AttributeType'
+                    nullable: true
+                    type: array
+                nextPageToken:
+                    description: |-
+                        The nextPageToken is shown for the next page if the number of results is larger than the max page size.
+                         The server returns one page of results and the nextPageToken until all results are retreived.
+                         To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
+                    type: string
+            title: List Attribute Types Response
+            type: object
+            x-speakeasy-name-override: ListAttributeTypesResponse
+        c1.api.attribute.v1.ListAttributeValuesResponse:
+            description: ListAttributeValuesResponse is the response for listing attribute values for a given AttributeType.
+            properties:
+                list:
+                    description: The list of AttributeValues.
+                    items:
+                        $ref: '#/components/schemas/c1.api.attribute.v1.AttributeValue'
+                    nullable: true
+                    type: array
+                nextPageToken:
+                    description: |-
+                        The nextPageToken is shown for the next page if the number of results is larger than the max page size.
+                         The server returns one page of results and the nextPageToken until all results are retreived.
+                         To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
+                    type: string
+            title: List Attribute Values Response
+            type: object
+            x-speakeasy-name-override: ListAttributeValuesResponse
+        c1.api.attribute.v1.SearchAttributeValuesRequest:
+            description: Search Attributes by a few properties.
+            properties:
+                attributeTypeIds:
+                    description: The attribute type ids for what type of attributes to search for.
+                    items:
+                        type: string
+                    nullable: true
+                    type: array
+                excludeIds:
+                    description: Exclude attributes with these ids from the search results.
+                    items:
+                        type: string
+                    nullable: true
+                    type: array
+                ids:
+                    description: Include attributes with these ids in the search results.
+                    items:
+                        type: string
+                    nullable: true
+                    type: array
+                pageSize:
+                    description: The pageSize where 0 <= pageSize <= 100. Values < 10 will be set to 10. A value of 0 returns the default page size (currently 25)
+                    format: int32
+                    type: number
+                pageToken:
+                    description: The pageToken field.
+                    type: string
+                query:
+                    description: Query the attributes with a fuzzy search on display name and description.
+                    type: string
+                value:
+                    description: Search for attributes with a case insensitive match on the attribute value which is the attribute name.
+                    type: string
+            title: Search Attribute Values Request
+            type: object
+            x-speakeasy-name-override: SearchAttributeValuesRequest
+        c1.api.attribute.v1.SearchAttributeValuesResponse:
+            description: SearchAttributeValuesResponse is the response for searching AttributeValues.
+            properties:
+                list:
+                    description: The list of returned AttributeValues.
+                    items:
+                        $ref: '#/components/schemas/c1.api.attribute.v1.AttributeValue'
+                    nullable: true
+                    type: array
+                nextPageToken:
+                    description: |-
+                        The nextPageToken is shown for the next page if the number of results is larger than the max page size.
+                         The server returns one page of results and the nextPageToken until all results are retreived.
+                         To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
+                    type: string
+            title: Search Attribute Values Response
+            type: object
+            x-speakeasy-name-override: SearchAttributeValuesResponse
         c1.api.auth.v1.IntrospectResponse:
             description: IntrospectResponse contains information about the current user who is authenticated.
             properties:
@@ -1795,9 +1983,6 @@ components:
                         The nextPageToken is shown for the next page if the number of results is larger than the max page size.
                          The server returns one page of results and the nextPageToken until all results are retreived.
                          To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
-                    type: string
-                notificationToken:
-                    description: Deprecated.
                     type: string
             title: List Roles Response
             type: object
@@ -2293,9 +2478,6 @@ components:
                 nextPageToken:
                     description: The nextPageToken is shown for the next page if the number of results is larger than the max page size. The server returns one page of results and the nextPageToken until all results are retreived. To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
                     type: string
-                notificationToken:
-                    description: Deprecated
-                    type: string
             title: List Policy Response
             type: object
             x-speakeasy-name-override: ListPolicyResponse
@@ -2506,6 +2688,8 @@ components:
                     type: boolean
                 provisionPolicy:
                     $ref: '#/components/schemas/c1.api.policy.v1.ProvisionPolicy'
+                provisionTarget:
+                    $ref: '#/components/schemas/c1.api.policy.v1.ProvisionTarget'
             title: Provision
             type: object
             x-speakeasy-name-override: Provision
@@ -2564,6 +2748,24 @@ components:
             title: Provision Policy
             type: object
             x-speakeasy-name-override: ProvisionPolicy
+        c1.api.policy.v1.ProvisionTarget:
+            description: ProvisionTarget indicates the specific app, app entitlement, and if known, the app user and grant duration of this provision step
+            properties:
+                appEntitlementId:
+                    description: The app entitlement that should be provisioned.
+                    type: string
+                appId:
+                    description: The app in which the entitlement should be provisioned
+                    type: string
+                appUserId:
+                    description: The app user that should be provisioned. May be unset if the app user is unknown
+                    type: string
+                grantDuration:
+                    format: duration
+                    type: string
+            title: Provision Target
+            type: object
+            x-speakeasy-name-override: ProvisionTarget
         c1.api.policy.v1.ReassignedAction:
             description: The ReassignedAction object describes the outcome of a policy step that has been reassigned.
             nullable: true
@@ -3474,11 +3676,23 @@ components:
             title: Task Expand Mask
             type: object
             x-speakeasy-name-override: TaskExpandMask
+        c1.api.task.v1.TaskGrantSource:
+            description: The TaskGrantSource message tracks which external URL was the source of the specificed grant ticket.
+            properties:
+                externalUrl:
+                    description: The external url source of the grant ticket.
+                    type: string
+                integrationId:
+                    description: The integration id for the source of tickets.
+                    type: string
+            title: Task Grant Source
+            type: object
+            x-speakeasy-name-override: TaskGrantSource
         c1.api.task.v1.TaskRef:
             description: This object references a task by ID.
             properties:
                 id:
-                    description: The ID of the TaskRef
+                    description: The ID of the referenced Task
                     type: string
             title: Task Ref
             type: object
@@ -3791,6 +4005,8 @@ components:
                 identityUserId:
                     description: The ID of the user associated with the app user we are granting access for. This field cannot be set if appUserID is also set.
                     type: string
+                source:
+                    $ref: '#/components/schemas/c1.api.task.v1.TaskGrantSource'
             required:
                 - appId
                 - appEntitlementId
@@ -3991,6 +4207,8 @@ components:
                     format: date-time
                     readOnly: true
                     type: string
+                source:
+                    $ref: '#/components/schemas/c1.api.task.v1.TaskGrantSource'
             title: Task Type Grant
             type: object
             x-speakeasy-name-override: TaskTypeGrant
@@ -4153,9 +4371,6 @@ components:
                     type: array
                 nextPageToken:
                     description: The nextPageToken is shown for the next page if the number of results is larger than the max page size. The server returns one page of results and the nextPageToken until all results are retreived. To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
-                    type: string
-                notificationToken:
-                    description: Deprecated
                     type: string
             title: Search Users Response
             type: object
@@ -4380,9 +4595,6 @@ components:
                         The nextPageToken is shown for the next page if the number of results is larger than the max page size.
                          The server returns one page of results and the nextPageToken until all results are retreived.
                          To retrieve the next page, use the same request and append a pageToken field with the value of nextPageToken shown on the previous page.
-                    type: string
-                notificationToken:
-                    description: Deprecated.
                     type: string
             title: User Service List Response
             type: object
@@ -4809,46 +5021,6 @@ paths:
                 - App Entitlement
             x-speakeasy-group: AppEntitlements
             x-speakeasy-name-override: List
-    /api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/groups:
-        get:
-            description: List app groups associated with an app entitlement.
-            operationId: c1.api.app.v1.AppEntitlements.ListGroups
-            parameters:
-                - in: path
-                  name: app_id
-                  required: true
-                  schema:
-                    description: The appId field.
-                    type: string
-                - in: path
-                  name: app_entitlement_id
-                  required: true
-                  schema:
-                    description: The appEntitlementId field.
-                    type: string
-                - in: query
-                  name: page_size
-                  schema:
-                    description: The pageSize field.
-                    format: int32
-                    type: number
-                - in: query
-                  name: page_token
-                  schema:
-                    description: The pageToken field.
-                    type: string
-            responses:
-                "200":
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/c1.api.app.v1.ListAppEntitlementGroupsResponse'
-                    description: The ListAppEntitlementGroupsResponse message contains a list of results and a nextPageToken if applicable.
-            summary: List Groups
-            tags:
-                - App Entitlement
-            x-speakeasy-group: AppEntitlements
-            x-speakeasy-name-override: ListGroups
     /api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/users:
         get:
             description: List the users, as AppEntitlementUsers objects, of an app entitlement.
@@ -4924,6 +5096,121 @@ paths:
                 - App Entitlement User Binding
             x-speakeasy-group: AppEntitlementUserBinding
             x-speakeasy-name-override: ListAppUsersForIdentityWithGrant
+    /api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners:
+        get:
+            description: List owners for a given app entitlement.
+            operationId: c1.api.app.v1.AppEntitlementOwners.List
+            parameters:
+                - in: path
+                  name: app_id
+                  required: true
+                  schema:
+                    description: The app_id field for the app entitlement to list owners of.
+                    type: string
+                - in: path
+                  name: entitlement_id
+                  required: true
+                  schema:
+                    description: The entitlement_id field for the app entitlement to list owners of.
+                    type: string
+                - in: query
+                  name: page_size
+                  schema:
+                    description: The page_size field for pagination.
+                    format: int32
+                    type: number
+                - in: query
+                  name: page_token
+                  schema:
+                    description: The page_token field for pagination.
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.app.v1.ListAppEntitlementOwnersResponse'
+                    description: The response message for listing app entitlement owners.
+            summary: List
+            tags:
+                - App Entitlement Owner
+            x-speakeasy-group: AppEntitlementOwners
+            x-speakeasy-name-override: List
+        post:
+            description: Add an owner to a given app entitlement.
+            operationId: c1.api.app.v1.AppEntitlementOwners.Add
+            parameters:
+                - in: path
+                  name: app_id
+                  required: true
+                  schema:
+                    description: The app_id field for the app entitlement to add the owner to.
+                    type: string
+                - in: path
+                  name: entitlement_id
+                  required: true
+                  schema:
+                    description: The entitlement_id field for the app entitlement to add the owner to.
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/c1.api.app.v1.AddAppEntitlementOwnerRequestInput'
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.app.v1.AddAppEntitlementOwnerResponse'
+                    description: The empty response message for adding an app entitlement owner.
+            summary: Add
+            tags:
+                - App Entitlement Owner
+            x-speakeasy-entity-operation: App_Entitlement_Owner#create
+            x-speakeasy-group: AppEntitlementOwners
+            x-speakeasy-name-override: Add
+    /api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners/{user_id}:
+        delete:
+            description: Remove an owner from a given app entitlement.
+            operationId: c1.api.app.v1.AppEntitlementOwners.Remove
+            parameters:
+                - in: path
+                  name: app_id
+                  required: true
+                  schema:
+                    description: The app_id field for the app entitlement to remove the owner of.
+                    type: string
+                - in: path
+                  name: entitlement_id
+                  required: true
+                  schema:
+                    description: The entitlement_id field for the app entitlement to remove the owner of.
+                    type: string
+                - in: path
+                  name: user_id
+                  required: true
+                  schema:
+                    description: The user_id field for the user to remove as an owner of the app entitlement.
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/c1.api.app.v1.RemoveAppEntitlementOwnerRequestInput'
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.app.v1.RemoveAppEntitlementOwnerResponse'
+                    description: The empty response message for removing an app entitlement owner.
+            summary: Remove
+            tags:
+                - App Entitlement Owner
+            x-speakeasy-entity-operation: App_Entitlement_Owner#delete
+            x-speakeasy-group: AppEntitlementOwners
+            x-speakeasy-name-override: Remove
     /api/v1/apps/{app_id}/entitlements/{id}:
         get:
             description: Get an app entitlement by ID.
@@ -5471,6 +5758,44 @@ paths:
                 - App Usage Controls
             x-speakeasy-group: AppUsageControls
             x-speakeasy-name-override: Update
+    /api/v1/apps/{app_user_app_id}/app_users/{app_user_id}:
+        post:
+            description: |-
+                Update an app user by ID. Only the fields specified in the update mask are updated.
+                 Currently, only the appUserType, and identityUserId fields can be updated.
+            operationId: c1.api.app.v1.AppUserService.Update
+            parameters:
+                - in: path
+                  name: app_user_app_id
+                  required: true
+                  schema:
+                    description: The ID of the application.
+                    readOnly: true
+                    type: string
+                - in: path
+                  name: app_user_id
+                  required: true
+                  schema:
+                    description: A unique idenditfier of the application user.
+                    readOnly: true
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/c1.api.app.v1.AppUserServiceUpdateRequestInput'
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.app.v1.AppUserServiceUpdateResponse'
+                    description: Successful response
+            summary: Update
+            tags:
+                - AppUsers
+            x-speakeasy-group: AppUser
+            x-speakeasy-name-override: Update
     /api/v1/apps/{connector_app_id}/connectors/{connector_id}/delegated:
         post:
             description: Update a delegated connector.
@@ -5586,6 +5911,140 @@ paths:
             x-speakeasy-entity-operation: App#update
             x-speakeasy-group: Apps
             x-speakeasy-name-override: Update
+    /api/v1/attribute/{id}:
+        delete:
+            description: Delete an attribute value by id.
+            operationId: c1.api.attribute.v1.Attributes.DeleteAttributeValue
+            parameters:
+                - in: path
+                  name: id
+                  required: true
+                  schema:
+                    description: The id field.
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/c1.api.attribute.v1.DeleteAttributeValueRequestInput'
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.DeleteAttributeValueResponse'
+                    description: DeleteAttributeValueResponse is the empty response for deleting an attribute value.
+            summary: Delete Attribute Value
+            tags:
+                - Attribute
+            x-speakeasy-group: Attributes
+            x-speakeasy-name-override: DeleteAttributeValue
+    /api/v1/attributes:
+        post:
+            description: Create a new attribute value.
+            operationId: c1.api.attribute.v1.Attributes.CreateAttributeValue
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/c1.api.attribute.v1.CreateAttributeValueRequest'
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.CreateAttributeValueResponse'
+                    description: CreateAttributeValueResponse is the response for creating an attribute value.
+            summary: Create Attribute Value
+            tags:
+                - Attribute
+            x-speakeasy-group: Attributes
+            x-speakeasy-name-override: CreateAttributeValue
+    /api/v1/attributes/{id}:
+        get:
+            description: Get an attribute value by id.
+            operationId: c1.api.attribute.v1.Attributes.GetAttributeValue
+            parameters:
+                - in: path
+                  name: id
+                  required: true
+                  schema:
+                    description: The id field.
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.GetAttributeValueResponse'
+                    description: GetAttributeValueResponse is the response for getting an attribute value by id.
+            summary: Get Attribute Value
+            tags:
+                - Attribute
+            x-speakeasy-group: Attributes
+            x-speakeasy-name-override: GetAttributeValue
+    /api/v1/attributes/types:
+        get:
+            description: List all attribute types.
+            operationId: c1.api.attribute.v1.Attributes.ListAttributeTypes
+            parameters:
+                - in: query
+                  name: page_size
+                  schema:
+                    description: The pageSize field.
+                    format: int32
+                    type: number
+                - in: query
+                  name: page_token
+                  schema:
+                    description: The pageToken field.
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.ListAttributeTypesResponse'
+                    description: ListAttributeTypesResponse is the response for listing attribute types.
+            summary: List Attribute Types
+            tags:
+                - Attribute
+            x-speakeasy-group: Attributes
+            x-speakeasy-name-override: ListAttributeTypes
+    /api/v1/attributes/types/{attribute_type_id}/values:
+        get:
+            description: List all attribute values for a given attribute type.
+            operationId: c1.api.attribute.v1.Attributes.ListAttributeValues
+            parameters:
+                - in: path
+                  name: attribute_type_id
+                  required: true
+                  schema:
+                    description: The attributeTypeId field.
+                    type: string
+                - in: query
+                  name: page_size
+                  schema:
+                    description: The pageSize field.
+                    format: int32
+                    type: number
+                - in: query
+                  name: page_token
+                  schema:
+                    description: The pageToken field.
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.ListAttributeValuesResponse'
+                    description: ListAttributeValuesResponse is the response for listing attribute values for a given AttributeType.
+            summary: List Attribute Values
+            tags:
+                - Attribute
+            x-speakeasy-group: Attributes
+            x-speakeasy-name-override: ListAttributeValues
     /api/v1/auth/introspect:
         get:
             description: Introspect returns the current user's principle_id, user_id and a list of roles, permissions, and enabled features.
@@ -6258,6 +6717,27 @@ paths:
                 - App
             x-speakeasy-group: AppSearch
             x-speakeasy-name-override: Search
+    /api/v1/search/attributes:
+        post:
+            description: Search attributes based on filters specified in the request body.
+            operationId: c1.api.attribute.v1.AttributeSearch.SearchAttributeValues
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/c1.api.attribute.v1.SearchAttributeValuesRequest'
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/c1.api.attribute.v1.SearchAttributeValuesResponse'
+                    description: SearchAttributeValuesResponse is the response for searching AttributeValues.
+            summary: Search Attribute Values
+            tags:
+                - Attribute
+            x-speakeasy-group: AttributeSearch
+            x-speakeasy-name-override: SearchAttributeValues
     /api/v1/search/entitlements:
         post:
             description: Search app entitlements based on filters specified in the request body.
