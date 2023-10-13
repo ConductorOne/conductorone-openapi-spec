@@ -95,7 +95,7 @@ def _generate_changed_notes(changed_schemas, diff):
     notes = ""
     for path in changed_schemas:
         notes += f"- {path}\n"
-        if path in diff['values_changed']:
+        if 'values_changed' in diff and path in diff['values_changed']:
             notes += f"\t- Old Value: {diff['values_changed'][path]['old_value']}\n\t- New Value: {diff['values_changed'][path]['new_value']}\n"
     return notes
 
