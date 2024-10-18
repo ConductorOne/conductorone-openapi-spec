@@ -1,5 +1,1093 @@
 ## Release Notes
 
+### Added:
+#### Schemas:
+- App Access Request Defaults: The AppAccessRequestDefaults message.
+
+This message contains a oneof named max_grant_duration. Only a single field of the following list may be set at a time:
+  - durationUnset
+  - durationGrant
+
+- App Access Request Defaults: The AppAccessRequestDefaults message.
+
+This message contains a oneof named max_grant_duration. Only a single field of the following list may be set at a time:
+  - durationUnset
+  - durationGrant
+
+- App Entitlement Proxy: The AppEntitlementProxy message.
+
+This message contains a oneof named _implicit. Only a single field of the following list may be set at a time:
+  - implicit
+
+- App Entitlement Proxy Expand Mask: The AppEntitlementProxyExpandMask message.
+- App Entitlement Proxy View: The AppEntitlementProxyView message.
+- App Entitlement User Binding Feed: The AppEntitlementUserBindingFeed message.
+- App Entitlement User Binding Feed View: The AppEntitlementUserBindingFeedView message.
+- App Entitlement User Binding History: The AppEntitlementUserBindingHistory message.
+- App Entitlement User Binding History View: The AppEntitlementUserBindingHistoryView message.
+- App Entitlement With Expired: The AppEntitlementWithExpired message.
+- App Managed State Binding Ref: The AppManagedStateBindingRef message.
+- App Resource Expand Mask: The app resource expand mask lets you get information about related objects from the request.
+- App Resource Service Update Request: The AppResourceServiceUpdateRequest message.
+- App Resource Service Update Response: The AppResourceServiceUpdateResponse message.
+- Cancel Access Request Defaults Request: The CancelAccessRequestDefaultsRequest message.
+- Create App Entitlement Proxy Request: The CreateAppEntitlementProxyRequest message.
+- Create App Entitlement Proxy Response: The CreateAppEntitlementProxyResponse message.
+- Create App Entitlement Request: The CreateAppEntitlementRequest message.
+- Create App Entitlement Response: The CreateAppEntitlementResponse message.
+- Create Manually Managed App Resource Request: The CreateManuallyManagedAppResourceRequest message.
+- Create Manually Managed App Resource Response: The CreateManuallyManagedAppResourceResponse message.
+- Create Manually Managed Resource Type Request: The CreateManuallyManagedResourceTypeRequest message.
+- Create Manually Managed Resource Type Response: The CreateManuallyManagedResourceTypeResponse message.
+- Delete App Entitlement Proxy Request: The DeleteAppEntitlementProxyRequest message.
+- Delete App Entitlement Proxy Response: The DeleteAppEntitlementProxyResponse message.
+- Delete App Entitlement Request: The DeleteAppEntitlementRequest message.
+- Delete App Entitlement Response: The DeleteAppEntitlementResponse message.
+- Delete Manually Managed App Resource Request: The DeleteManuallyManagedAppResourceRequest message.
+- Delete Manually Managed App Resource Response: The DeleteManuallyManagedAppResourceResponse message.
+- Delete Manually Managed Resource Type Request: The DeleteManuallyManagedResourceTypeRequest message.
+- Delete Manually Managed Resource Type Response: The DeleteManuallyManagedResourceTypeResponse message.
+- Force Sync Request: Signal the connector to start syncing. This puts the sync on the queue. It does not guarantee immediate sync. Long syncs still take minutes to hours.
+- Force Sync Response: The ForceSyncResponse message.
+- Get App Entitlement Proxy Response: The GetAppEntitlementProxyResponse message.
+- Grant Reason: The GrantReason message.
+- Search App Entitlements With Expired Response: The SearchAppEntitlementsWithExpiredResponse message contains a list of results and a nextPageToken if applicable.
+- Search Grant Feed Response: The SearchGrantFeedResponse message contains a list of grant event results and a nextPageToken if applicable.
+- Search Past Grants Response: The SearchPastGrantsResponse message contains a list of past grants and a nextPageToken if applicable.
+- Set App Owners Request: The request message for setting the app owners.
+- Set App Owners Response: The empty response message for setting the app owners.
+- Update Manually Managed Resource Type Request: The UpdateManuallyManagedResourceTypeRequest message.
+- Update Manually Managed Resource Type Response: The UpdateManuallyManagedResourceTypeResponse message.
+- Personal Client Search Service Search Request: The PersonalClientSearchServiceSearchRequest message.
+- Personal Client Search Service Search Response: The PersonalClientSearchServiceSearchResponse message.
+- Personal Client Service Delete Request: The PersonalClientServiceDeleteRequest message.
+- Personal Client Service Delete Response: The PersonalClientServiceDeleteResponse message.
+- Personal Client Service Get Response: The PersonalClientServiceGetResponse message.
+- Personal Client Service List Response: The PersonalClientServiceListResponse message.
+- Personal Client Service Update Request: The PersonalClientServiceUpdateRequest message.
+- Personal Client Service Update Response: The PersonalClientServiceUpdateResponse message.
+- External Ticket Provision: This provision step indicates that we should check an external ticket to provision this entitlement
+- Marker: The Marker message.
+- Multi Step: MultiStep indicates that this provision step has multiple steps to process.
+- Resource Owner Approval: The resource owner approval allows configuration of the approval step when the target approvers are the resource owners.
+- Rule: The Rule message.
+- Validate Policy Cel Request: The ValidatePolicyCELRequest message.
+- Validate Policy Cel Response: The ValidatePolicyCELResponse message.
+- Wait: Define a Wait step for a policy to wait on a condition to be met.
+
+This message contains a oneof named until. Only a single field of the following list may be set at a time:
+  - condition
+
+- Wait Condition: The WaitCondition message.
+- Wait Condition Instance: Used by the policy engine to describe an instantiated condition to wait on.
+- Wait Instance: Used by the policy engine to describe an instantiated wait step.
+
+This message contains a oneof named until. Only a single field of the following list may be set at a time:
+  - condition
+
+
+This message contains a oneof named outcome. Only a single field of the following list may be set at a time:
+  - succeeded
+  - timedOut
+
+- Condition Succeeded: The ConditionSucceeded message.
+- Condition Timed Out: The ConditionTimedOut message.
+- Webhook Approval: The WebhookApproval message.
+- Webhook Provision: This provision step indicates that a webhook should be called to provision this entitlement.
+- App Entitlement With User Bindings: The AppEntitlementWithUserBindings message represents an app entitlement and its associated user bindings.
+- Bundle Automation: The BundleAutomation message.
+
+This message contains a oneof named conditions. Only a single field of the following list may be set at a time:
+  - entitlements
+
+- Bundle Automation Last Run State: The BundleAutomationLastRunState message.
+- Bundle Automation Rule Entitlement: The BundleAutomationRuleEntitlement message.
+- Force Run Bundle Automation Request: The ForceRunBundleAutomationRequest message.
+- Force Run Bundle Automation Response: The ForceRunBundleAutomationResponse message.
+- Set Bundle Automation Request: The SetBundleAutomationRequest message.
+
+This message contains a oneof named conditions. Only a single field of the following list may be set at a time:
+  - entitlements
+
+- Aws External Id: The AWSExternalID message.
+- Get Aws External Id Response: The GetAWSExternalIDResponse message.
+- Get Session Settings Response: The GetSessionSettingsResponse message.
+- Session Settings: The SessionSettings message.
+- Update Session Settings Request: The UpdateSessionSettingsRequest message.
+- Update Session Settings Response: The UpdateSessionSettingsResponse message.
+- Export Service Create Request: The ExportServiceCreateRequest message is used to create a new system log exporter.
+
+This message contains a oneof named export_to. Only a single field of the following list may be set at a time:
+  - datasource
+
+- Export Service Create Response: The ExportServiceCreateResponse message.
+- Export Service Delete Request: The ExportServiceDeleteRequest message.
+- Export Service Delete Response: The ExportServiceDeleteResponse message.
+- Export Service Get Response: The ExportServiceGetResponse message contains the system log exporter object.
+- Export Service List Events Request: The ExportServiceListEventsRequest message.
+- Export Service List Events Response: The ExportServiceListEventsResponse message.
+- Export Service List Response: The ExportServiceListResponse message.
+- Export Service Update Request: The ExportServiceUpdateRequest message.
+- Export Service Update Response: The ExportServiceUpdateResponse message.
+- Export To Datasource: The ExportToDatasource message.
+- Exporter: The Exporter message.
+
+This message contains a oneof named export_to. Only a single field of the following list may be set at a time:
+  - datasource
+
+- Exporter Ref: The ExporterRef message.
+- Exports Search Service Search Request: The ExportsSearchServiceSearchRequest message.
+- Exports Search Service Search Response: The ExportsSearchServiceSearchResponse message.
+- System Log Service List Events Request: The SystemLogServiceListEventsRequest message.
+- System Log Service List Events Response: The SystemLogServiceListEventsResponse message.
+- Task Actions Service Hard Reset Request: The TaskActionsServiceHardResetRequest object lets you reset a task and recalculate its policy.
+- Task Actions Service Hard Reset Response: The TaskActionsServiceHardResetResponse message.
+- Task Actions Service Reassign Request: The TaskActionsServiceReassignRequest message.
+- Task Actions Service Reassign Response: The TaskActionsServiceReassignResponse returns a task view with paths indicating the location of expanded items in the array.
+- Task Actions Service Restart Request: The TaskActionsServiceRestartRequest object lets you restart a task.
+- Task Actions Service Restart Response: The TaskActionsServiceRestartResponse message.
+- Task Service Create Offboarding Request: The TaskServiceCreateOffboardingRequest message.
+- Task Service Create Offboarding Response: The TaskServiceCreateOffboardingResponse message.
+- Task Type Offboarding: The TaskTypeOffboarding message.
+- Webhook: The Webhook message.
+- Webhook Instance: The WebhookInstance message.
+- Webhook Ref: The WebhookRef message.
+- Webhook Source: The WebhookSource message.
+
+This message contains a oneof named source. Only a single field of the following list may be set at a time:
+  - test
+  - policyPostAction
+  - approvalStep
+  - provisionStep
+
+- Webhook Source Approval Step: The WebhookSourceApprovalStep message.
+- Webhook Source Policy Post Action: The WebhookSourcePolicyPostAction message.
+- Webhook Source Provision Step: The WebhookSourceProvisionStep message.
+- Webhook Source Test: The WebhookSourceTest message.
+- Webhook Spec: The WebhookSpec message.
+- Webhooks Search Request: The WebhooksSearchRequest message.
+- Webhooks Search Response: The WebhooksSearchResponse message.
+- Webhooks Service Create Request: The WebhooksServiceCreateRequest message.
+- Webhooks Service Create Response: The WebhooksServiceCreateResponse message.
+- Webhooks Service Delete Request: The WebhooksServiceDeleteRequest message.
+- Webhooks Service Delete Response: Empty response body. Status code indicates success.
+- Webhooks Service Get Response: The WebhooksServiceGetResponse message.
+- Webhooks Service List Response: The WebhooksServiceListResponse message.
+- Webhooks Service Test Request: The WebhooksServiceTestRequest message.
+- Webhooks Service Test Response: The WebhooksServiceTestResponse message.
+- Webhooks Service Update Request: The WebhooksServiceUpdateRequest message contains the webhook object to update and a field mask to indicate which fields to update. It uses URL value for input.
+- Webhooks Service Update Response: The WebhooksServiceUpdateResponse message.
+#### Endpoints:
+- /api/v1/apps/{app_id}/access_request_defaults [GET]: Invokes the c1.api.app.v1.AppAccessRequestsDefaultsService.GetAppAccessRequestsDefaults method.
+- /api/v1/apps/{app_id}/access_request_defaults [POST]: Invokes the c1.api.app.v1.AppAccessRequestsDefaultsService.CreateAppAccessRequestsDefaults method.
+- /api/v1/apps/{app_id}/access_request_defaults/cancel [POST]: Invokes the c1.api.app.v1.AppAccessRequestsDefaultsService.CancelAppAccessRequestsDefaults method.
+- /api/v1/apps/{app_id}/connectors/{connector_id}/force_sync [POST]: Invokes the c1.api.app.v1.ConnectorService.ForceSync method.
+- /api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/grants [GET]: Search app entitlements, include app users, users, expires, discovered.
+- /api/v1/apps/{src_app_id}/{src_app_entitlement_id}/bindings/{dst_app_id}/{dst_app_entitlement_id} [DELETE]: Invokes the c1.api.app.v1.AppEntitlementsProxy.Delete method.
+- /api/v1/apps/{src_app_id}/{src_app_entitlement_id}/bindings/{dst_app_id}/{dst_app_entitlement_id} [GET]: Invokes the c1.api.app.v1.AppEntitlementsProxy.Get method.
+- /api/v1/apps/{src_app_id}/{src_app_entitlement_id}/bindings/{dst_app_id}/{dst_app_entitlement_id} [POST]: Invokes the c1.api.app.v1.AppEntitlementsProxy.Create method.
+- /api/v1/catalogs/{request_catalog_id}/bundle_automation [GET]: Get bundle automation
+- /api/v1/catalogs/{request_catalog_id}/bundle_automation [POST]: Invokes the c1.api.requestcatalog.v1.RequestCatalogManagementService.SetBundleAutomation method.
+- /api/v1/catalogs/{request_catalog_id}/bundle_automation/run [POST]: Invokes the c1.api.requestcatalog.v1.RequestCatalogManagementService.ForceRunBundleAutomation method.
+- /api/v1/grants/feed [GET]: Invokes the c1.api.app.v1.AppEntitlementUserBindingService.SearchGrantFeed method.
+- /api/v1/iam/personal_clients/{id} [DELETE]: Invokes the c1.api.iam.v1.PersonalClientService.Delete method.
+- /api/v1/iam/personal_clients/{id} [GET]: Invokes the c1.api.iam.v1.PersonalClientService.Get method.
+- /api/v1/iam/personal_clients/{id} [POST]: Invokes the c1.api.iam.v1.PersonalClientService.Update method.
+- /api/v1/policies/validate/cel [POST]: Validate policies
+- /api/v1/search/apps/{app_id}/entitlements/users/{app_user_id} [GET]: Invokes the c1.api.app.v1.AppEntitlementSearchService.SearchAppEntitlementsForAppUser method.
+- /api/v1/search/iam/personal_clients [POST]: Invokes the c1.api.iam.v1.PersonalClientSearchService.Search method.
+- /api/v1/search/past-grants [GET]: Invokes the c1.api.app.v1.AppEntitlementUserBindingService.SearchPastGrants method.
+- /api/v1/search/systemlog/exports [POST]: Invokes the c1.api.systemlog.v1.ExportsSearchService.Search method.
+- /api/v1/search/webhooks [POST]: Invokes the c1.api.webhooks.v1.WebhooksSearch.Search method.
+- /api/v1/settings/aws-external-id [GET]: Invokes the c1.api.settings.v1.AWSExternalIDSettings.Get method.
+- /api/v1/settings/session [GET]: Invokes the c1.api.settings.v1.SessionSettingsService.Get method.
+- /api/v1/settings/session [POST]: Invokes the c1.api.settings.v1.SessionSettingsService.Update method.
+- /api/v1/systemlog/events [POST]: ListEvents pulls Events from the ConductorOne system.
+
+ This endpoint should be used to synchorize the
+ system log events to external systems.
+- /api/v1/systemlog/exports [GET]: List Exports.
+- /api/v1/systemlog/exports [POST]: Create a system log export.
+- /api/v1/systemlog/exports/{export_id} [DELETE]: Delete a policy by ID.
+- /api/v1/systemlog/exports/{export_id} [GET]: Get a system log export by ID
+- /api/v1/systemlog/exports/{export_id} [POST]: Update a system log export by providing a policy object and an update mask.
+- /api/v1/systemlog/exports/{export_id}/events [POST]: Invokes the c1.api.systemlog.v1.ExportService.ListEvents method.
+- /api/v1/task/offboarding [POST]: Invokes the c1.api.task.v1.TaskService.CreateOffboardingTask method.
+- /api/v1/tasks/{task_id}/action/reassign [POST]: Invokes the c1.api.task.v1.TaskActionsService.Reassign method.
+- /api/v1/tasks/{task_id}/action/reset [POST]: Invokes the c1.api.task.v1.TaskActionsService.HardReset method.
+- /api/v1/tasks/{task_id}/action/restart [POST]: Invokes the c1.api.task.v1.TaskActionsService.Restart method.
+- /api/v1/webhooks [GET]: Invokes the c1.api.webhooks.v1.WebhooksService.List method.
+- /api/v1/webhooks [POST]: Invokes the c1.api.webhooks.v1.WebhooksService.Create method.
+- /api/v1/webhooks/{id} [DELETE]: Invokes the c1.api.webhooks.v1.WebhooksService.Delete method.
+- /api/v1/webhooks/{id} [GET]: Invokes the c1.api.webhooks.v1.WebhooksService.Get method.
+- /api/v1/webhooks/{id} [POST]: Invokes the c1.api.webhooks.v1.WebhooksService.Update method.
+- /api/v1/webhooks/{id}/test [POST]: Invokes the c1.api.webhooks.v1.WebhooksService.Test method.
+### Deleted:
+#### Schemas:
+- App Entitlement With User Bindings: The AppEntitlementWithUserBindings message represents an app entitlement and its associated user bindings.
+- Rule: The Rule message.
 ### Changed:
 #### Schemas:
-- root['components']['schemas']['c1.api.user.v1.User']['properties']['profile']
+- root['components']['schemas']['c1.webhooks.v1.Body']
+- root['components']['schemas']['c1.webhooks.v1.PayloadPolicyApprovalStep']
+- root['components']['schemas']['c1.webhooks.v1.PayloadPolicyPostAction']
+- root['components']['schemas']['c1.webhooks.v1.PayloadProvisionStep']
+- root['components']['schemas']['c1.webhooks.v1.PayloadTest']
+- root['components']['schemas']['c1.webhooks.v1.ResponsePolicyApprovalStep']
+- root['components']['schemas']['c1.webhooks.v1.ResponsePolicyApprovalStep.ResponsePolicyApprovalReplacePolicy']
+- root['components']['schemas']['c1.webhooks.v1.ResponsePolicyApprovalStep.ResponsePolicyApprovalStepApprove']
+- root['components']['schemas']['c1.webhooks.v1.ResponsePolicyApprovalStep.ResponsePolicyApprovalStepDeny']
+- root['components']['schemas']['c1.webhooks.v1.ResponsePolicyApprovalStep.ResponsePolicyApprovalStepReassign']
+- root['components']['schemas']['c1.webhooks.v1.ResponsePolicyPostAction']
+- root['components']['schemas']['c1.webhooks.v1.ResponseProvisionStep']
+- root['components']['schemas']['c1.webhooks.v1.ResponseProvisionStep.ResponseProvisionStepComplete']
+- root['components']['schemas']['c1.webhooks.v1.ResponseProvisionStep.ResponseProvisionStepErrored']
+- root['components']['schemas']['c1.webhooks.v1.ResponseTest']
+- root['components']['schemas']['c1.api.app.v1.AddAppEntitlementOwnerRequestInput']['properties']['userId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['appOwners']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['identityMatching']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['isDirectory']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['isManuallyManaged']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['certifyPolicyId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['grantPolicyId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['iconUrl']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['monthlyCostUsd']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['revokePolicyId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['defaultValuesApplied']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['isAutomationEnabled']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['isManuallyManaged']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['overrideAccessRequestsDefaults']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['sourceConnectorIds']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['userEditedMask']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['appResourceId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['appResourceTypeId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['certifyPolicyId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['complianceFrameworkValueIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['durationGrant']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['durationUnset']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['emergencyGrantEnabled']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['emergencyGrantPolicyId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['grantPolicyId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['revokePolicyId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['riskLevelValueId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlement']['properties']['slug']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementExpandMask']['properties']['paths']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementRef']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementRef']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['excludeResourceTypeIds']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['isAutomated']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['membershipType']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['refs']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['resourceIds']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['resourceTraitIds']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['accessReviewId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['alias']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['appIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['appUserIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['complianceFrameworkIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['excludeAppIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['excludeAppUserIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['includeDeleted']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['onlyGetExpiring']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['pageSize']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['pageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['query']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['resourceTypeIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['riskLevelIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementUserBinding']['properties']['appEntitlementId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementUserBinding']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementUserBinding']['properties']['appUserId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementView']['properties']['appPath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementView']['properties']['appResourcePath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementView']['properties']['appResourceTypePath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppPopulationReport']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppPopulationReport']['properties']['downloadUrl']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppPopulationReport']['properties']['hashes']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppPopulationReport']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppPopulationReport']['properties']['state']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppPopulationReport']['properties']['state']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.app.v1.AppReportServiceListResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppReportServiceListResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResource']['x-speakeasy-entity']
+- root['components']['schemas']['c1.api.app.v1.AppResource']['properties']['parentAppResourceId']
+- root['components']['schemas']['c1.api.app.v1.AppResource']['properties']['parentAppResourceTypeId']
+- root['components']['schemas']['c1.api.app.v1.AppResource']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResource']['properties']['appResourceTypeId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResource']['properties']['customDescription']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResource']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResource']['properties']['grantCount']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResource']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceServiceGetResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceServiceGetResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceServiceListResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceServiceListResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceServiceListResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceServiceListResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceType']['x-speakeasy-entity']
+- root['components']['schemas']['c1.api.app.v1.AppResourceType']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceTypeServiceGetResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceTypeServiceGetResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceTypeServiceListResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceTypeServiceListResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceTypeServiceListResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceTypeServiceListResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceTypeView']['properties']['appPath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceView']['properties']['parentResourcePath']
+- root['components']['schemas']['c1.api.app.v1.AppResourceView']['properties']['parentResourceTypePath']
+- root['components']['schemas']['c1.api.app.v1.AppResourceView']['properties']['appPath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppResourceView']['properties']['resourceTypePath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUsageControls']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUsageControls']['properties']['notify']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUsageControls']['properties']['notifyAfterDays']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUsageControls']['properties']['revoke']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUsageControls']['properties']['revokeAfterDays']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUser']['properties']['emails']
+- root['components']['schemas']['c1.api.app.v1.AppUser']['properties']['username']
+- root['components']['schemas']['c1.api.app.v1.AppUser']['properties']['usernames']
+- root['components']['schemas']['c1.api.app.v1.AppUser']['properties']['appUserType']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUser']['properties']['appUserType']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.app.v1.AppUserExpandMask']['properties']['paths']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUserServiceUpdateRequestInput']['properties']['updateMask']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUserServiceUpdateResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUserServiceUpdateResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUserStatus']['properties']['status']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.app.v1.AppUserView']['properties']['appPath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUserView']['properties']['identityUserPath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.AppUserView']['properties']['lastUsagePath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.Connector']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.Connector']['properties']['config']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.Connector']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.Connector']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.Connector']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.Connector']['properties']['userIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorCredential']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorCredential']['properties']['clientId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorCredential']['properties']['connectorId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorCredential']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorCredential']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorExpandMask']['properties']['paths']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateDelegatedRequestInput']['properties']['appManagedStateBindingRef']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateDelegatedRequestInput']['properties']['catalogId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateDelegatedRequestInput']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateDelegatedRequestInput']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateDelegatedRequestInput']['properties']['userIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateRequestInput']['properties']['catalogId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateRequestInput']['properties']['config']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateRequestInput']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateRequestInput']['properties']['userIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceCreateResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceGetResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceGetResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceListResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceListResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceListResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceListResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceRotateCredentialResponse']['properties']['clientSecret']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceUpdateDelegatedRequestInput']['properties']['updateMask']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceUpdateRequestInput']['properties']['updateMask']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceUpdateResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorServiceUpdateResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorStatus']['properties']['completedAt']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorStatus']['properties']['lastError']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorStatus']['properties']['startedAt']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorStatus']['properties']['status']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorStatus']['properties']['status']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.app.v1.ConnectorStatus']['properties']['updatedAt']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorView']['properties']['appPath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ConnectorView']['properties']['usersPath']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.CreateAppRequest']['properties']['certifyPolicyId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.CreateAppRequest']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.CreateAppRequest']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.CreateAppRequest']['properties']['grantPolicyId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.CreateAppRequest']['properties']['monthlyCostUsd']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.CreateAppRequest']['properties']['owners']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.CreateAppRequest']['properties']['revokePolicyId']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.GetAppEntitlementResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.GetAppEntitlementResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.GetAppUsageControlsResponse']['properties']['hasUsageData']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppEntitlementOwnersResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppEntitlementOwnersResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppEntitlementUsersResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppEntitlementUsersResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppEntitlementUsersResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppEntitlementUsersResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppEntitlementsResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppEntitlementsResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppEntitlementsResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppEntitlementsResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppOwnersResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppOwnersResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppResourceOwnersResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppResourceOwnersResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppUsersForIdentityWithGrantResponse']['properties']['bindings']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppsResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.ListAppsResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesRequest']['properties']['appUserIds']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesRequest']['properties']['appIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesRequest']['properties']['excludeResourceTypeIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesRequest']['properties']['excludeResourceTypeTraitIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesRequest']['properties']['pageSize']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesRequest']['properties']['pageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesRequest']['properties']['query']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesRequest']['properties']['resourceTypeIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesRequest']['properties']['resourceTypeTraitIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppsRequest']['properties']['onlyDirectories']
+- root['components']['schemas']['c1.api.app.v1.SearchAppsRequest']['properties']['appIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppsRequest']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppsRequest']['properties']['excludeAppIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppsRequest']['properties']['pageSize']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppsRequest']['properties']['pageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppsRequest']['properties']['query']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppsResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SearchAppsResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.SetAppEntitlementOwnersRequestInput']['properties']['userIds']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.UpdateAppEntitlementRequestInput']['properties']['overrideAccessRequestsDefaults']
+- root['components']['schemas']['c1.api.app.v1.UpdateAppEntitlementRequestInput']['properties']['updateMask']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.UpdateAppEntitlementResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.UpdateAppEntitlementResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.UpdateAppRequestInput']['properties']['updateMask']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.UpdateAppUsageControlsRequestInput']['properties']['updateMask']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.AttributeType']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.AttributeType']['properties']['name']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.AttributeValue']['properties']['attributeTypeId']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.AttributeValue']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.AttributeValue']['properties']['value']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.CreateAttributeValueRequest']['properties']['attributeTypeId']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.CreateAttributeValueRequest']['properties']['value']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.ListAttributeTypesResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.ListAttributeTypesResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.ListAttributeValuesResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.ListAttributeValuesResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.SearchAttributeValuesRequest']['properties']['attributeTypeIds']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.SearchAttributeValuesRequest']['properties']['excludeIds']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.SearchAttributeValuesRequest']['properties']['ids']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.SearchAttributeValuesRequest']['properties']['pageSize']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.SearchAttributeValuesRequest']['properties']['pageToken']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.SearchAttributeValuesRequest']['properties']['query']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.SearchAttributeValuesRequest']['properties']['value']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.SearchAttributeValuesResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.attribute.v1.SearchAttributeValuesResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.auth.v1.IntrospectResponse']['properties']['features']['readOnly']
+- root['components']['schemas']['c1.api.auth.v1.IntrospectResponse']['properties']['permissions']['readOnly']
+- root['components']['schemas']['c1.api.auth.v1.IntrospectResponse']['properties']['principleId']['readOnly']
+- root['components']['schemas']['c1.api.auth.v1.IntrospectResponse']['properties']['roles']['readOnly']
+- root['components']['schemas']['c1.api.auth.v1.IntrospectResponse']['properties']['userId']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryExpandMask']['properties']['paths']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryServiceCreateRequest']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryServiceCreateResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryServiceCreateResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryServiceGetResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryServiceGetResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryServiceListResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryServiceListResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryServiceListResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryServiceListResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.directory.v1.DirectoryView']['properties']['appPath']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.ListRolesResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.ListRolesResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.PersonalClient']['properties']['allowSourceCidr']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.PersonalClient']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.PersonalClient']['properties']['expiresTime']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.PersonalClient']['properties']['scopedRoles']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.PersonalClientServiceCreateRequest']['properties']['allowSourceCidr']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.PersonalClientServiceCreateRequest']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.PersonalClientServiceCreateRequest']['properties']['expires']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.PersonalClientServiceCreateRequest']['properties']['scopedRoles']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.PersonalClientServiceCreateResponse']['properties']['clientSecret']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.Role']['properties']['systemApiOnly']
+- root['components']['schemas']['c1.api.iam.v1.Role']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.Role']['properties']['permissions']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.Role']['properties']['serviceRoles']['readOnly']
+- root['components']['schemas']['c1.api.iam.v1.UpdateRoleRequestInput']['properties']['updateMask']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Accept']['properties']
+- root['components']['schemas']['c1.api.policy.v1.AcceptInstance']['properties']
+- root['components']['schemas']['c1.api.policy.v1.AppEntitlementReference']['properties']['appEntitlementId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.AppEntitlementReference']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Approval']['properties']['requireDenialReason']
+- root['components']['schemas']['c1.api.policy.v1.Approval']['properties']['resourceOwners']
+- root['components']['schemas']['c1.api.policy.v1.Approval']['properties']['webhook']
+- root['components']['schemas']['c1.api.policy.v1.ApprovalInstance']['properties']['state']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.policy.v1.CancelledAction']['properties']['cancelledAt']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.CancelledAction']['properties']['cancelledByUserId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.CompletedAction']['properties']['completedAt']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.CompletedAction']['properties']['entitlements']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.CompletedAction']['properties']['userId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.CreatePolicyRequest']['properties']['rules']
+- root['components']['schemas']['c1.api.policy.v1.CreatePolicyRequest']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.CreatePolicyRequest']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.CreatePolicyRequest']['properties']['policySteps']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.CreatePolicyRequest']['properties']['policyType']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.CreatePolicyRequest']['properties']['policyType']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.policy.v1.CreatePolicyRequest']['properties']['postActions']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.CreatePolicyRequest']['properties']['reassignTasksToDelegates']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.DelegatedProvision']['properties']['implicit']
+- root['components']['schemas']['c1.api.policy.v1.DelegatedProvision']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.DelegatedProvision']['properties']['entitlementId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ErroredAction']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ErroredAction']['properties']['errorCode']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ErroredAction']['properties']['erroredAt']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ListPolicyResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ListPolicyResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ManualProvision']['properties']['instructions']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ManualProvision']['properties']['userIds']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Policy']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Policy']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Policy']['properties']['policySteps']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Policy']['properties']['policyType']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Policy']['properties']['policyType']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.policy.v1.Policy']['properties']['postActions']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Policy']['properties']['reassignTasksToDelegates']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Policy']['properties']['rules']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.PolicyPostActions']['properties']['certifyRemediateImmediately']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.PolicyRef']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.PolicyStep']['properties']['wait']
+- root['components']['schemas']['c1.api.policy.v1.PolicyStepInstance']['properties']['wait']
+- root['components']['schemas']['c1.api.policy.v1.PolicyStepInstance']['properties']['policyGenerationId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.PolicyStepInstance']['properties']['state']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.policy.v1.PolicySteps']['properties']['steps']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Provision']['properties']['assigned']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ProvisionInstance']['properties']['notificationId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ProvisionInstance']['properties']['state']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ProvisionInstance']['properties']['state']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.policy.v1.ProvisionPolicy']['properties']['externalTicket']
+- root['components']['schemas']['c1.api.policy.v1.ProvisionPolicy']['properties']['multiStep']
+- root['components']['schemas']['c1.api.policy.v1.ProvisionPolicy']['properties']['webhook']
+- root['components']['schemas']['c1.api.policy.v1.ProvisionTarget']['properties']['appEntitlementId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ProvisionTarget']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ProvisionTarget']['properties']['appUserId']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.ProvisionTarget']['properties']['grantDuration']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.Reject']['properties']
+- root['components']['schemas']['c1.api.policy.v1.RejectInstance']['properties']
+- root['components']['schemas']['c1.api.policy.v1.SearchPoliciesRequest']['properties']['includeDeleted']
+- root['components']['schemas']['c1.api.policy.v1.SearchPoliciesRequest']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.SearchPoliciesRequest']['properties']['pageSize']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.SearchPoliciesRequest']['properties']['pageToken']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.SearchPoliciesRequest']['properties']['policyTypes']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.SearchPoliciesRequest']['properties']['query']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.SearchPoliciesRequest']['properties']['refs']['readOnly']
+- root['components']['schemas']['c1.api.policy.v1.UpdatePolicyRequestInput']['properties']['updateMask']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['enrollmentBehavior']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['requestBundle']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['unenrollmentBehavior']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['accessEntitlements']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['appIds']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['createdByUserId']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['published']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalog']['properties']['visibleToEveryone']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogExpandMask']['properties']['paths']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceAddAccessEntitlementsRequestInput']['properties']['accessEntitlements']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceAddAppEntitlementsRequestInput']['properties']['createRequests']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceAddAppEntitlementsRequestInput']['properties']['appEntitlements']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceCreateRequest']['properties']['requestBundle']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceCreateRequest']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceCreateRequest']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceCreateRequest']['properties']['published']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceCreateRequest']['properties']['visibleToEveryone']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceGetResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceGetResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListEntitlementsForAccessResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListEntitlementsForAccessResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListEntitlementsForAccessResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListEntitlementsForAccessResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListEntitlementsPerCatalogResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListEntitlementsPerCatalogResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListEntitlementsPerCatalogResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListEntitlementsPerCatalogResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceListResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceRemoveAccessEntitlementsRequestInput']['properties']['accessEntitlements']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceRemoveAppEntitlementsRequestInput']['properties']['appEntitlements']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogManagementServiceUpdateRequestInput']['properties']['updateMask']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsRequest']['properties']['appDisplayName']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsRequest']['properties']['entitlementAlias']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsRequest']['properties']['grantedStatus']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsRequest']['properties']['grantedStatus']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsRequest']['properties']['includeDeleted']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsRequest']['properties']['pageSize']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsRequest']['properties']['pageToken']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsRequest']['properties']['query']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogView']['properties']['memberCount']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogView']['properties']['accessEntitlementsPath']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogView']['properties']['appPaths']['readOnly']
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogView']['properties']['createdByUserPath']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetCategory']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetCategory']['properties']['iconUrl']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetCategory']['properties']['param']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetRange']['properties']['count']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetRange']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetRange']['properties']['from']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetRange']['properties']['iconUrl']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetRange']['properties']['to']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetRangeItem']['properties']['ranges']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetValue']['properties']['count']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetValue']['properties']['displayName']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetValue']['properties']['iconUrl']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetValue']['properties']['value']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.FacetValueItem']['properties']['values']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.Facets']['properties']['count']['readOnly']
+- root['components']['schemas']['c1.api.search.v1.Facets']['properties']['facets']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.ExternalRef']['properties']['externalRefSource']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.task.v1.Task']['properties']['insightIds']
+- root['components']['schemas']['c1.api.task.v1.Task']['properties']['recommendation']
+- root['components']['schemas']['c1.api.task.v1.Task']['properties']['processing']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.task.v1.Task']['properties']['state']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.task.v1.TaskActionsServiceApproveRequestInput']['properties']['comment']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskActionsServiceApproveRequestInput']['properties']['policyStepId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskActionsServiceCommentRequestInput']['properties']['comment']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskActionsServiceCommentResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskActionsServiceCommentResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskActionsServiceDenyRequestInput']['properties']['comment']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskActionsServiceDenyRequestInput']['properties']['policyStepId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskActionsServiceEscalateToEmergencyAccessRequestInput']['properties']['comment']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskActionsServiceEscalateToEmergencyAccessRequestInput']['properties']['policyStepId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskExpandMask']['properties']['paths']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskGrantSource']['properties']['requestId']
+- root['components']['schemas']['c1.api.task.v1.TaskGrantSource']['properties']['externalUrl']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskGrantSource']['properties']['integrationId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskRef']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskRevokeSourceExpired']['properties']['expiredAt']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskRevokeSourceNonUsage']['properties']['expiresAt']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskRevokeSourceNonUsage']['properties']['lastLogin']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskRevokeSourceRequest']['properties']['requestUserId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskRevokeSourceReview']['properties']['accessReviewId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskRevokeSourceReview']['properties']['certTicketId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['accountTypes']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['excludeAppResourceTypeIds']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['olderThanDuration']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['accessReviewIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['accountOwnerIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['actorId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['appEntitlementIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['appResourceIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['appResourceTypeIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['appUserSubjectIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['applicationIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['assigneesInIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['createdAfter']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['createdBefore']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['currentStep']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['currentStep']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['emergencyStatus']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['emergencyStatus']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['excludeAppEntitlementIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['excludeIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['includeDeleted']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['myWorkUserIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['openerIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['pageSize']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['pageToken']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['previouslyActedOnIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['query']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['refs']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['sortBy']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['sortBy']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['subjectIds']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['taskStates']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['taskTypes']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskSearchResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceActionResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceActionResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceActionResponse']['properties']['ticketActionId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateGrantRequest']['properties']['appEntitlementId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateGrantRequest']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateGrantRequest']['properties']['appUserId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateGrantRequest']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateGrantRequest']['properties']['emergencyAccess']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateGrantRequest']['properties']['grantDuration']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateGrantRequest']['properties']['identityUserId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateRevokeRequest']['properties']['appEntitlementId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateRevokeRequest']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateRevokeRequest']['properties']['appUserId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateRevokeRequest']['properties']['description']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateRevokeRequest']['properties']['identityUserId']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateRevokeResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskServiceCreateRevokeResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.task.v1.TaskType']['properties']['offboarding']
+- root['components']['schemas']['c1.api.task.v1.TaskTypeCertify']['properties']['outcome']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.task.v1.TaskTypeGrant']['properties']['outcome']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.task.v1.TaskTypeRevoke']['properties']['outcome']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.task.v1.TaskView']['properties']['insightsPath']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersRequest']['properties']['email']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersRequest']['properties']['excludeIds']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersRequest']['properties']['ids']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersRequest']['properties']['pageSize']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersRequest']['properties']['pageToken']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersRequest']['properties']['query']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersRequest']['properties']['refs']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersRequest']['properties']['roleIds']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersRequest']['properties']['userStatuses']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.SearchUsersResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.User']['properties']['emails']
+- root['components']['schemas']['c1.api.user.v1.User']['properties']['username']
+- root['components']['schemas']['c1.api.user.v1.User']['properties']['usernameSources']
+- root['components']['schemas']['c1.api.user.v1.User']['properties']['usernames']
+- root['components']['schemas']['c1.api.user.v1.User']['properties']['delegatedUserId']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.User']['properties']['directoryStatus']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.user.v1.User']['properties']['roleIds']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.User']['properties']['status']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.User']['properties']['status']['x-speakeasy-unknown-values']
+- root['components']['schemas']['c1.api.user.v1.UserAttributeMappingSource']['properties']['appId']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserAttributeMappingSource']['properties']['appUserId']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserAttributeMappingSource']['properties']['appUserProfileAttributeKey']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserAttributeMappingSource']['properties']['userAttributeMappingId']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserAttributeMappingSource']['properties']['value']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserExpandMask']['properties']['paths']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserRef']['properties']['id']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserServiceGetResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserServiceGetResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserServiceListResponse']['properties']['expanded']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserServiceListResponse']['properties']['expanded']['items']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserServiceListResponse']['properties']['list']['readOnly']
+- root['components']['schemas']['c1.api.user.v1.UserServiceListResponse']['properties']['nextPageToken']['readOnly']
+- root['components']['schemas']['c1.api.app.v1.App']['properties']['monthlyCostUsd']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.app.v1.AppEntitlementSearchServiceSearchRequest']['properties']['pageSize']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.app.v1.AppUsageControls']['properties']['notifyAfterDays']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.app.v1.AppUsageControls']['properties']['revokeAfterDays']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.app.v1.CreateAppRequest']['properties']['monthlyCostUsd']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.app.v1.SearchAppResourceTypesRequest']['properties']['pageSize']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.app.v1.SearchAppsRequest']['properties']['pageSize']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.attribute.v1.SearchAttributeValuesRequest']['properties']['pageSize']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.policy.v1.AppGroupApproval']['properties']['allowSelfApproval']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.AppGroupApproval']['properties']['appGroupId']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.AppGroupApproval']['properties']['appId']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.AppGroupApproval']['properties']['fallback']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.AppGroupApproval']['properties']['fallbackUserIds']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.AppOwnerApproval']['properties']['allowSelfApproval']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.Approval']['properties']['allowReassignment']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.Approval']['properties']['assigned']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.Approval']['properties']['requireApprovalReason']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.Approval']['properties']['requireReassignmentReason']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.EntitlementOwnerApproval']['properties']['allowSelfApproval']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.EntitlementOwnerApproval']['properties']['fallback']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.EntitlementOwnerApproval']['properties']['fallbackUserIds']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.ExpressionApproval']['properties']['allowSelfApproval']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.ExpressionApproval']['properties']['assignedUserIds']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.ExpressionApproval']['properties']['expressions']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.ExpressionApproval']['properties']['fallback']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.ExpressionApproval']['properties']['fallbackUserIds']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.ManagerApproval']['properties']['allowSelfApproval']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.ManagerApproval']['properties']['fallback']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.ManagerApproval']['properties']['fallbackUserIds']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.Policy']['properties']['rules']['items']['$ref']
+	- Old Value: #/components/schemas/c1.api.policy.v1.Policy.Rule
+	- New Value: #/components/schemas/c1.api.policy.v1.Rule
+- root['components']['schemas']['c1.api.policy.v1.SearchPoliciesRequest']['properties']['pageSize']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.policy.v1.SelfApproval']['properties']['assignedUserIds']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.SelfApproval']['properties']['fallback']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.SelfApproval']['properties']['fallbackUserIds']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.UserApproval']['properties']['allowSelfApproval']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.policy.v1.UserApproval']['properties']['userIds']['readOnly']
+	- Old Value: True
+	- New Value: False
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsRequest']['properties']['pageSize']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.requestcatalog.v1.RequestCatalogSearchServiceSearchEntitlementsResponse']['properties']['list']['items']['$ref']
+	- Old Value: #/components/schemas/c1.api.app.v1.AppEntitlementWithUserBindings
+	- New Value: #/components/schemas/c1.api.requestcatalog.v1.AppEntitlementWithUserBindings
+- root['components']['schemas']['c1.api.task.v1.Task']['properties']['commentCount']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.task.v1.TaskSearchRequest']['properties']['pageSize']['type']
+	- Old Value: number
+	- New Value: integer
+- root['components']['schemas']['c1.api.user.v1.SearchUsersRequest']['properties']['pageSize']['type']
+	- Old Value: number
+	- New Value: integer
+#### Endpoints:
+- root['paths']['/api/v1/apps']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{connector_id}/credentials']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{connector_id}/credentials']['post']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{connector_id}/credentials/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{connector_id}/credentials/{id}']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{connector_id}/credentials/{id}']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{connector_id}/credentials/{id}']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{connector_id}/credentials/{id}']['post']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{connector_id}/credentials/{id}']['post']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{id}']['delete']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{id}']['delete']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{id}']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{id}']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/{id}']['post']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/connectors/create']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements']['post']
+- root['paths']['/api/v1/apps/{app_id}/entitlements']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/users']['get']['deprecated']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/users']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/users']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/users']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/users']['get']['parameters'][3]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/users/{identity_user_id}/grants']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/users/{identity_user_id}/grants']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/users/{identity_user_id}/grants']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners']['get']['parameters'][3]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners']['post']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners']['put']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners']['put']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners/{user_id}']['delete']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners/{user_id}']['delete']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners/{user_id}']['delete']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{id}']['delete']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{id}']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{id}']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/resource_types/{app_resource_type_id}/resources/{app_resource_id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/resource_types/{app_resource_type_id}/resources/{app_resource_id}']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/resource_types/{app_resource_type_id}/resources/{app_resource_id}']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/resource_types/{app_resource_type_id}/resources/{app_resource_id}']['get']['parameters'][3]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/resource_types/{app_resource_type_id}/resources/{app_resource_id}']['get']['parameters'][4]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/users/{app_user_id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/users/{app_user_id}']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/users/{app_user_id}']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/entitlements/users/{app_user_id}']['get']['parameters'][3]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/owners']['put']
+- root['paths']['/api/v1/apps/{app_id}/owners']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/owners']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/owners']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/owners/{user_id}']['delete']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/owners/{user_id}']['delete']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/owners/{user_id}']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/owners/{user_id}']['post']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/report']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/report']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/report']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/report']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types']['post']
+- root['paths']['/api/v1/apps/{app_id}/resource_types']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources']['post']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources']['get']['parameters'][3]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources/{id}']['delete']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources/{id}']['post']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources/{id}']['get']['x-speakeasy-entity-operation']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources/{id}']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources/{id}']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{id}']['delete']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{id}']['post']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{id}']['get']['x-speakeasy-entity-operation']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{id}']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{resource_type_id}/resource/{resource_id}/owners']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{resource_type_id}/resource/{resource_id}/owners']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{resource_type_id}/resource/{resource_id}/owners']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{resource_type_id}/resource/{resource_id}/owners']['get']['parameters'][3]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{resource_type_id}/resource/{resource_id}/owners']['get']['parameters'][4]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/usage_controls']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{app_id}/usage_controls']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{connector_app_id}/connectors/{connector_id}/delegated']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{connector_app_id}/connectors/{connector_id}/delegated']['post']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{id}']['delete']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/attribute/{id}']['delete']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/attributes/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/attributes/types']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/attributes/types']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/attributes/types/{attribute_type_id}/values']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/attributes/types/{attribute_type_id}/values']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/attributes/types/{attribute_type_id}/values']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs']['get']['parameters']
+- root['paths']['/api/v1/catalogs/{catalog_id}/requestable_entitlements']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{catalog_id}/requestable_entitlements']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{catalog_id}/requestable_entitlements']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{catalog_id}/requestable_entries']['delete']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{catalog_id}/requestable_entries']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{catalog_id}/visibility_bindings']['delete']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{catalog_id}/visibility_bindings']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{catalog_id}/visibility_entitlements']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{catalog_id}/visibility_entitlements']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{catalog_id}/visibility_entitlements']['get']['parameters'][2]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{id}']['delete']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/catalogs/{id}']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/directories']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/directories']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/directories/{app_id}']['delete']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/directories/{app_id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/iam/personal_clients']['get']
+- root['paths']['/api/v1/iam/roles']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/iam/roles']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/iam/roles/{role_id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/policies']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/policies']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/policies/{id}']['delete']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/policies/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/tasks/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/tasks/{task_id}/action/approve']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/tasks/{task_id}/action/comment']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/tasks/{task_id}/action/deny']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/tasks/{task_id}/action/escalate']['post']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/users']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/users']['get']['parameters'][1]['schema']['readOnly']
+- root['paths']['/api/v1/users/{id}']['get']['parameters'][0]['schema']['readOnly']
+- root['paths']['/api/v1/apps']['get']['parameters'][0]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/connectors']['get']['parameters'][1]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/entitlements']['get']['parameters'][1]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{app_entitlement_id}/users']['get']['parameters'][2]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/entitlements/{entitlement_id}/owners']['get']['parameters'][2]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/entitlements/resource_types/{app_resource_type_id}/resources/{app_resource_id}']['get']['parameters'][3]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/entitlements/users/{app_user_id}']['get']['parameters'][2]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/owners']['get']['parameters'][1]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/report']['get']['parameters'][1]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/resource_types']['get']['parameters'][1]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{app_resource_type_id}/resources']['get']['parameters'][2]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/apps/{app_id}/resource_types/{resource_type_id}/resource/{resource_id}/owners']['get']['parameters'][3]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/attributes/types']['get']['parameters'][0]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/attributes/types/{attribute_type_id}/values']['get']['parameters'][1]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/catalogs/{catalog_id}/requestable_entitlements']['get']['parameters'][1]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/catalogs/{catalog_id}/visibility_entitlements']['get']['parameters'][1]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/directories']['get']['parameters'][0]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/iam/roles']['get']['parameters'][0]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/policies']['get']['parameters'][0]['schema']['type']
+	- Old Value: number
+	- New Value: integer
+- root['paths']['/api/v1/users']['get']['parameters'][0]['schema']['type']
+	- Old Value: number
+	- New Value: integer
